@@ -1,0 +1,3 @@
+# This repository holds releases and documentation. No source, no build output.
+*.dmg
+*.app
