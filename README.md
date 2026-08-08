@@ -91,10 +91,20 @@ OpenAlex, Crossref and OpenStreetMap when you ask it to look a PI or an
 institute up. Optional features (news, patents, cover-letter drafting) use
 services you supply your own key for, and stay off until you do.
 
+## Backing up
+
+Settings has a **Data backup** card: one click writes a consistent,
+compressed snapshot of the database — postings, notes, stars, watched PIs —
+plus your pasted images into `Application Support/PostGrabbit/backups/`, and
+shows it in Finder so you can copy it to a drive or cloud folder of your own.
+Restoring is deliberately manual: quit the app, double-click the archive, put
+`jobs.db` back into the `data` folder.
+
 ## Updating
 
 The app checks this repository for a newer release and tells you in Settings.
-Downloading is one click; installing is the same drag as the first time.
+Downloading is one click; installing is the same drag as the first time. A
+backup is made automatically before every download.
 
 **An update never touches your settings.** The application lives in
 Applications and everything you own lives in Application Support — replacing
