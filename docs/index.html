@@ -224,15 +224,22 @@ html[lang="ko"] h3{font-weight:600;font-size:24px}
 .kbd-row{margin-top:44px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:center;font-size:13.5px;color:var(--ink-soft)}
 .kbd-row kbd{font-family:var(--mono);font-size:12px;border:1px solid var(--line);border-bottom-width:2px;border-radius:6px;padding:2px 8px;background:var(--paper-raise);color:var(--ink)}
 
-/* ————— everything else ————— */
-.etc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:44px}
+/* ————— everything else (dark toolbox) ————— */
+.toolbox{background:radial-gradient(120% 140% at 50% -20%,var(--dark-bg-2),var(--dark-bg));color:var(--dark-ink);border-top:1px solid var(--dark-line);border-bottom:1px solid var(--dark-line);position:relative}
+.toolbox::after{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(196,169,106,.5),transparent)}
+.toolbox .eyebrow{color:var(--brass-soft)}
+.toolbox .eyebrow::before{background:var(--brass)}
+.toolbox h2{color:#fff}
+.toolbox .section-lede{color:var(--dark-soft)}
+.etc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
 @media(max-width:960px){.etc-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){.etc-grid{grid-template-columns:1fr}}
-.etc{background:var(--paper-raise);padding:24px 22px}
-.etc:hover{background:#FDFEFC}
-.etc b{display:block;font-weight:600;font-size:14.5px}
-.etc p{margin-top:6px;font-size:13px;color:var(--ink-soft);line-height:1.6}
-.etc .glyph{font-family:var(--serif);font-style:italic;color:var(--brass);font-size:18px;line-height:1;display:block;margin-bottom:10px}
+@media(max-width:560px){.etc-grid{grid-template-columns:1fr}}
+.etc{background:rgba(255,255,255,.025);border:1px solid var(--dark-line);border-radius:16px;padding:26px 24px 24px;transition:border-color .25s ease,background .25s ease,transform .25s ease}
+.etc:hover{border-color:#2C523B;background:rgba(255,255,255,.045);transform:translateY(-2px)}
+.etc b{display:block;font-weight:600;font-size:15.5px;color:#fff;margin-top:16px}
+.etc p{margin-top:7px;font-size:13.5px;color:var(--dark-soft);line-height:1.65}
+.etc .ico{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:11px;background:rgba(53,196,137,.1);border:1px solid rgba(53,196,137,.22);color:#4ED39B}
+.etc .ico svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 
 /* ————— architecture ————— */
 .arch{margin-top:44px;background:var(--paper-raise);border:1px solid var(--line);border-radius:var(--radius);padding:36px 32px;overflow-x:auto;box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 16px 40px -28px rgba(18,43,29,.3)}
@@ -737,24 +744,65 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
   </div>
 </section>
 
-<section id="more">
+<section id="more" class="toolbox">
   <div class="wrap">
     <p class="eyebrow"><span class="en">And the rest</span><span class="ko">그리고 나머지</span></p>
-    <h2><span class="en">The details that add up.</span><span class="ko">쌓여서 차이를 만드는 디테일.</span></h2>
+    <h2><span class="en">The rest of the desk.</span><span class="ko">책상 위의 나머지 도구들.</span></h2>
+    <p class="section-lede">
+      <span class="en">The features that don't headline but carry the daily work — every one of them ships in the current release.</span>
+      <span class="ko">전면에 나서지 않지만 매일의 작업을 떠받치는 기능들 — 전부 현재 릴리스에 들어 있습니다.</span>
+    </p>
     <div class="etc-grid reveal">
-      <div class="etc"><span class="glyph">a</span><b><span class="en">Excel, when asked</span><span class="ko">요청하면 Excel로</span></b><p><span class="en">A full workbook with charts and per-region sheets, exported on demand or with each run.</span><span class="ko">차트와 지역별 시트를 갖춘 워크북을 원할 때, 또는 매 실행마다 내보냅니다.</span></p></div>
-      <div class="etc"><span class="glyph">b</span><b><span class="en">Email reports</span><span class="ko">이메일 리포트</span></b><p><span class="en">A digest of what arrived, mailed on the schedule you set — with the workbook attached.</span><span class="ko">무엇이 새로 왔는지 정한 주기로 메일로 — 워크북을 첨부해서.</span></p></div>
-      <div class="etc"><span class="glyph">c</span><b><span class="en">Source health</span><span class="ko">소스 상태 진단</span></b><p><span class="en">Feeds whose recent runs all came back empty are named, not buried under "success, 0".</span><span class="ko">최근 실행이 전부 빈손인 피드는 "성공, 0건" 밑에 묻히지 않고 이름이 불립니다.</span></p></div>
-      <div class="etc"><span class="glyph">d</span><b><span class="en">On your phone, if you say so</span><span class="ko">허락하면 폰에서도</span></b><p><span class="en">Off by default; opt in and the dashboard is reachable over your own Tailscale network, encrypted, never the open Wi-Fi.</span><span class="ko">기본은 꺼짐. 켜면 당신의 Tailscale 네트워크로만 — 암호화된 채로, 공용 Wi-Fi에는 절대 열리지 않습니다.</span></p></div>
-      <div class="etc"><span class="glyph">e</span><b><span class="en">Honest maps</span><span class="ko">정직한 지도</span></b><p><span class="en">Institute pins come from OpenAlex + OpenStreetMap and always state their precision — a city pin is never dressed up as an address.</span><span class="ko">기관 핀은 OpenAlex와 OpenStreetMap에서 오고 정밀도를 항상 밝힙니다 — 도시 핀이 주소 행세를 하지 않습니다.</span></p></div>
-      <div class="etc"><span class="glyph">f</span><b><span class="en">A knowledge graph</span><span class="ko">지식 그래프</span></b><p><span class="en">PIs, papers, patents, postings and lab pages drawn as one network, with its own legend.</span><span class="ko">PI, 논문, 특허, 공고, 연구실 페이지를 하나의 네트워크로 — 전용 범례와 함께.</span></p></div>
-      <div class="etc"><span class="glyph">g</span><b><span class="en">Updates that respect you</span><span class="ko">선을 지키는 업데이트</span></b><p><span class="en">The app checks releases, downloads, backs up, and hands you the disk image — installing stays your action.</span><span class="ko">앱은 확인·다운로드·백업까지만 하고 디스크 이미지를 건넵니다 — 설치는 당신의 행동으로 남습니다.</span></p></div>
-      <div class="etc"><span class="glyph">h</span><b><span class="en">Two languages, one app</span><span class="ko">두 언어, 하나의 앱</span></b><p><span class="en">Korean and English throughout, following your system language, switchable any time.</span><span class="ko">한국어와 영어가 앱 전체에 — 시스템 언어를 따르고 언제든 바꿀 수 있습니다.</span></p></div>
+      <div class="etc">
+        <span class="ico"><svg viewBox="0 0 20 20"><rect x="2.5" y="3" width="15" height="14" rx="2"/><path d="M2.5 8h15M8 3v14"/></svg></span>
+        <b><span class="en">Excel, when asked</span><span class="ko">요청하면 Excel로</span></b>
+        <p><span class="en">A full workbook with charts and per-region sheets, exported on demand or attached to each run's report.</span><span class="ko">차트와 지역별 시트를 갖춘 워크북을 원할 때 내보내거나 매 실행 리포트에 첨부합니다.</span></p>
+      </div>
+      <div class="etc">
+        <span class="ico"><svg viewBox="0 0 20 20"><rect x="2.5" y="4.5" width="15" height="11" rx="2"/><path d="m3.5 6 6.5 5 6.5-5"/></svg></span>
+        <b><span class="en">Email reports</span><span class="ko">이메일 리포트</span></b>
+        <p><span class="en">A digest of what arrived, mailed on the schedule you set — so a quiet week is visibly quiet, not just unopened.</span><span class="ko">무엇이 새로 왔는지 정한 주기로 메일로 — 조용한 한 주는 열어보지 않아서가 아니라 눈에 보이게 조용합니다.</span></p>
+      </div>
+      <div class="etc">
+        <span class="ico"><svg viewBox="0 0 20 20"><path d="M2 10.5h3.5L8 4l3.5 12L14 10.5h4"/></svg></span>
+        <b><span class="en">Source health</span><span class="ko">소스 상태 진단</span></b>
+        <p><span class="en">Feeds whose recent runs all came back empty are named, not buried under "success, 0 found" forever.</span><span class="ko">최근 실행이 전부 빈손인 피드는 "성공, 0건" 밑에 영원히 묻히지 않고 이름이 불립니다.</span></p>
+      </div>
+      <div class="etc">
+        <span class="ico"><svg viewBox="0 0 20 20"><rect x="3" y="10" width="14" height="7" rx="2"/><path d="M10 2.5V9m0 0 3-3m-3 3L7 6"/></svg></span>
+        <b><span class="en">One-click backup</span><span class="ko">원클릭 백업</span></b>
+        <p><span class="en">A consistent, compressed snapshot of everything you own — postings, notes, stars, images — revealed in Finder, yours to copy anywhere.</span><span class="ko">공고·메모·별표·이미지까지, 당신의 모든 것을 일관된 압축 스냅샷으로 — Finder에 바로 열어 어디로든 복사할 수 있게.</span></p>
+      </div>
+      <div class="etc">
+        <span class="ico"><svg viewBox="0 0 20 20"><rect x="6" y="2.5" width="8" height="15" rx="2"/><path d="M9 14.5h2"/></svg></span>
+        <b><span class="en">On your phone, if you say so</span><span class="ko">허락하면 폰에서도</span></b>
+        <p><span class="en">Off by default; opt in and the dashboard rides your own Tailscale network — encrypted, keyed, never the open Wi-Fi.</span><span class="ko">기본은 꺼짐. 켜면 당신의 Tailscale 네트워크로만 — 암호화되고 키가 걸린 채, 공용 Wi-Fi에는 절대 열리지 않습니다.</span></p>
+      </div>
+      <div class="etc">
+        <span class="ico"><svg viewBox="0 0 20 20"><path d="M10 17.5s-6-5.2-6-9.3a6 6 0 1 1 12 0c0 4.1-6 9.3-6 9.3Z"/><circle cx="10" cy="8" r="2.2"/></svg></span>
+        <b><span class="en">Honest maps</span><span class="ko">정직한 지도</span></b>
+        <p><span class="en">Institute pins come from OpenAlex and OpenStreetMap and always state their precision — a city pin never poses as an address.</span><span class="ko">기관 핀은 OpenAlex·OpenStreetMap에서 오고 정밀도를 항상 밝힙니다 — 도시 핀이 주소 행세를 하지 않습니다.</span></p>
+      </div>
+      <div class="etc">
+        <span class="ico"><svg viewBox="0 0 20 20"><circle cx="10" cy="4.5" r="2"/><circle cx="4.5" cy="15" r="2"/><circle cx="15.5" cy="15" r="2"/><path d="M9 6.3 5.5 13M11 6.3l3.5 6.7M6.5 15h7"/></svg></span>
+        <b><span class="en">A knowledge graph</span><span class="ko">지식 그래프</span></b>
+        <p><span class="en">PIs, papers, patents, postings and lab pages drawn as one network with its own legend — the shape of your field, not a list.</span><span class="ko">PI·논문·특허·공고·연구실 페이지를 전용 범례와 함께 하나의 네트워크로 — 목록이 아니라 분야의 지형으로.</span></p>
+      </div>
+      <div class="etc">
+        <span class="ico"><svg viewBox="0 0 20 20"><path d="M16.5 10a6.5 6.5 0 1 1-1.9-4.6"/><path d="M16.5 2.5v3.4h-3.4"/></svg></span>
+        <b><span class="en">Updates that respect you</span><span class="ko">선을 지키는 업데이트</span></b>
+        <p><span class="en">The app checks releases, backs up, downloads, and hands you the disk image — installing stays your action, and your data is never touched.</span><span class="ko">앱은 확인·백업·다운로드까지만 하고 디스크 이미지를 건넵니다 — 설치는 당신의 행동으로 남고, 데이터에는 닿지 않습니다.</span></p>
+      </div>
+      <div class="etc">
+        <span class="ico"><svg viewBox="0 0 20 20"><path d="M2.5 3.5h8v6.5H7L4.5 12.5V10h-2Z"/><path d="M12.5 8h5v5.5H16l-2 2v-2h-1.5Z"/></svg></span>
+        <b><span class="en">Two languages, one app</span><span class="ko">두 언어, 하나의 앱</span></b>
+        <p><span class="en">Korean and English throughout — the UI, the reports, this page. It follows your system language and switches any time.</span><span class="ko">UI, 리포트, 이 페이지까지 한국어와 영어로 — 시스템 언어를 따르고 언제든 바꿀 수 있습니다.</span></p>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="architecture" style="padding-top:0">
+<section id="architecture">
   <div class="wrap">
     <p class="eyebrow"><span class="en">Under the hood</span><span class="ko">구성</span></p>
     <h2><span class="en">One pipeline, one database, one page.</span><span class="ko">파이프라인 하나, 데이터베이스 하나, 페이지 하나.</span></h2>
