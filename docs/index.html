@@ -15,7 +15,15 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://jaeyoonsung.github.io/PostGrabbit/assets/og.png">
 <link rel="canonical" href="https://jaeyoonsung.github.io/PostGrabbit/">
-<meta name="theme-color" content="#F9FAF6">
+<meta name="theme-color" content="#F9FAF6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0D1611" media="(prefers-color-scheme: dark)">
+<script>
+(function(){try{
+  var q=new URLSearchParams(location.search).get('theme');
+  var d=q?q==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  if(d)document.documentElement.setAttribute('data-theme','dark');
+}catch(e){}})();
+</script>
 <link rel="icon" href="assets/logo.png?v=2">
 <link rel="apple-touch-icon" href="assets/logo.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -296,6 +304,62 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
 .foot-about p{margin-top:10px;font-size:13.5px;max-width:30em}
 .colophon{margin-top:40px;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--band-n);font-family:var(--mono);letter-spacing:.02em}
 :focus-visible{outline:2px solid var(--pine);outline-offset:2px;border-radius:4px}
+
+/* ————— nav scrollspy & release list ————— */
+.nav a.item.active{color:var(--pine-deep);position:relative}
+.nav a.item.active::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;border-radius:2px;background:var(--pine)}
+.rel-list{margin:28px auto 0;max-width:560px;text-align:left;border-top:1px dashed var(--line);padding-top:8px}
+.rel-list a{display:flex;gap:14px;align-items:baseline;padding:9px 4px;text-decoration:none;border-radius:8px;font-size:13.5px}
+.rel-list a:hover{background:var(--pine-wash)}
+.rel-tag{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--pine-deep);flex:none;min-width:64px}
+.rel-name{color:var(--ink);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rel-date{margin-left:auto;font-family:var(--mono);font-size:11.5px;color:var(--band-n);flex:none}
+
+/* ————— dark theme ————— */
+[data-theme="dark"]{
+  --pine:#1E9A58;
+  --pine-deep:#6FCF97;
+  --pine-wash:rgba(53,196,137,.09);
+  --ink:#E9F0EA;
+  --ink-soft:#9DB2A3;
+  --paper:#0D1611;
+  --paper-raise:#152219;
+  --paper-alt:#0F1A13;
+  --line:#26382C;
+  --line-soft:#1D2C22;
+  --brass:#C4A96A;
+  --brass-soft:#8A7440;
+  --band-n:#6B7A70;
+}
+[data-theme="dark"] ::selection{background:#1E5C3B}
+[data-theme="dark"] h1 em,[data-theme="dark"] h2 em{color:#4EC08A}
+[data-theme="dark"] .mock-bar{background:linear-gradient(180deg,#17251C,#121D16)}
+[data-theme="dark"] .mock-rail{background:#111C15}
+[data-theme="dark"] .kan-col{background:#111C15}
+[data-theme="dark"] .tag.hard{color:#F0968A;border-color:#5C2E27;background:rgba(185,58,43,.14)}
+[data-theme="dark"] .tag.amber{color:#E0B36A;border-color:#5C4A22;background:rgba(183,121,31,.14)}
+[data-theme="dark"] .tag.ok{color:#6FCF97;border-color:#245C3C;background:rgba(53,196,137,.12)}
+[data-theme="dark"] .viz-quote mark{background-color:#46231D;color:#F0968A}
+[data-theme="dark"] .viz-quote mark.y{background-color:#453416;color:#E0B36A}
+[data-theme="dark"] .viz-quote mark.g{background-color:#17311F;color:#6FCF97}
+[data-theme="dark"] .demo-read .viz-quote mark{background-image:linear-gradient(#46231D,#46231D)}
+[data-theme="dark"] .demo-read .viz-quote mark.y{background-image:linear-gradient(#453416,#453416)}
+[data-theme="dark"] .demo-read .viz-quote mark.g{background-image:linear-gradient(#17311F,#17311F)}
+[data-theme="dark"] .gatekeeper{border-color:#4A3D1C;background:#221D0D;color:#D8B876}
+[data-theme="dark"] .use code,[data-theme="dark"] .faq code{background:#1B2A20}
+[data-theme="dark"] .req{color:#F0968A;border-color:#5C2E27}
+[data-theme="dark"] .pg-cursor{background:rgba(233,240,234,.14);border-color:rgba(233,240,234,.5);box-shadow:0 2px 6px rgba(0,0,0,.4)}
+[data-theme="dark"] .mk-toggle i{background:#33443A}
+[data-theme="dark"] .node.core{box-shadow:0 0 0 3px #142A1C}
+[data-theme="dark"] .globe .sph{fill:#12241A;stroke:#2C523B}
+[data-theme="dark"] .globe .grat{stroke:#22392B}
+[data-theme="dark"] .globe text{fill:#6B7A70}
+[data-theme="dark"] .dot{opacity:.85}
+[data-theme="dark"] .brand img,[data-theme="dark"] .foot-about img{box-shadow:0 2px 10px -2px rgba(0,0,0,.6)}
+@media(prefers-reduced-motion:no-preference){
+  [data-theme="dark"] .mk-toggle i{animation-name:pgTogD}
+  @keyframes pgTogD{0%,57%{background:#33443A}60%,84%{background:var(--pine)}88%,100%{background:#33443A}}
+}
 
 /* ————— live demos ————— */
 .mock{position:relative}
@@ -653,10 +717,10 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
       </div>
       <div class="step-visual globe" aria-hidden="true">
         <svg width="240" height="240" viewBox="0 0 240 240">
-          <circle cx="120" cy="120" r="104" fill="#F0F7F2" stroke="#BFDCCB" stroke-width="1.5"/>
-          <ellipse cx="120" cy="120" rx="104" ry="40" fill="none" stroke="#DFE5DC"/>
-          <ellipse cx="120" cy="120" rx="63" ry="103" fill="none" stroke="#DFE5DC"/>
-          <ellipse cx="120" cy="120" rx="23" ry="104" fill="none" stroke="#DFE5DC"/>
+          <circle class="sph" cx="120" cy="120" r="104" fill="#F0F7F2" stroke="#BFDCCB" stroke-width="1.5"/>
+          <ellipse class="grat" cx="120" cy="120" rx="104" ry="40" fill="none" stroke="#DFE5DC"/>
+          <ellipse class="grat" cx="120" cy="120" rx="63" ry="103" fill="none" stroke="#DFE5DC"/>
+          <ellipse class="grat" cx="120" cy="120" rx="23" ry="104" fill="none" stroke="#DFE5DC"/>
           <g class="pin"><line x1="75" y1="73" x2="75" y2="53" stroke="#147A42" stroke-width="5" stroke-linecap="round"/><circle cx="75" cy="73" r="3" fill="#147A42"/><circle class="rip" cx="75" cy="73" r="7" fill="none" stroke="#147A42" stroke-width="1.5"/></g>
           <g class="pin"><line x1="108" y1="60" x2="108" y2="30" stroke="#147A42" stroke-width="5" stroke-linecap="round"/><circle cx="108" cy="60" r="3" fill="#147A42"/><circle class="rip" cx="108" cy="60" r="7" fill="none" stroke="#147A42" stroke-width="1.5"/></g>
           <g class="pin"><line x1="145" y1="68" x2="145" y2="49" stroke="#2B6CB0" stroke-width="5" stroke-linecap="round"/><circle cx="145" cy="68" r="3" fill="#2B6CB0"/><circle class="rip" cx="145" cy="68" r="7" fill="none" stroke="#2B6CB0" stroke-width="1.5"/></g>
@@ -932,6 +996,7 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
           <span class="en"><b>First launch:</b> macOS will say the app is from an unidentified developer. Control-click <b>PostGrabbit.app</b> → <b>Open</b> → confirm. Once is enough.</span>
           <span class="ko"><b>첫 실행:</b> macOS가 확인되지 않은 개발자라며 거부합니다. <b>PostGrabbit.app</b>을 Control-클릭 → <b>열기</b> → 확인. 한 번이면 됩니다.</span>
         </div>
+        <div class="rel-list" id="rel-list" hidden></div>
       </div>
     </div>
   </div>
@@ -1082,17 +1147,66 @@ function setLang(l){
     document.querySelectorAll('.stat b[data-n]').forEach(function(el){cio.observe(el)});
   }
 
-  /* latest release tag, quietly */
-  fetch('https://api.github.com/repos/JAEYOONSUNG/PostGrabbit/releases/latest')
-    .then(function(r){return r.ok?r.json():null})
-    .then(function(j){
-      if(!j||!j.tag_name)return;
-      var d=j.published_at?new Date(j.published_at):null;
-      var when=d?d.toLocaleDateString(document.documentElement.lang==='ko'?'ko-KR':'en-US',{year:'numeric',month:'short',day:'numeric'}):'';
-      ['release-note','dl-note'].forEach(function(id){
-        var el=document.getElementById(id);
-        if(el)el.innerHTML='<b>'+j.tag_name+'</b>'+(when?' · '+when:'')+' · macOS · Apple silicon';
+  /* follow live system theme changes */
+  try{
+    matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(e){
+      if(new URLSearchParams(location.search).get('theme'))return;
+      document.documentElement.toggleAttribute&&
+      (e.matches?document.documentElement.setAttribute('data-theme','dark')
+                :document.documentElement.removeAttribute('data-theme'));
+    });
+  }catch(e){}
+
+  /* nav scrollspy */
+  if('IntersectionObserver' in window){
+    var navMap={};
+    document.querySelectorAll('.nav a.item[href^="#"]').forEach(function(a){navMap[a.getAttribute('href').slice(1)]=a});
+    var sio=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(!e.isIntersecting)return;
+        Object.keys(navMap).forEach(function(k){navMap[k].classList.remove('active')});
+        var a=navMap[e.target.id];
+        if(a)a.classList.add('active');
       });
+    },{rootMargin:'-35% 0px -55% 0px'});
+    Object.keys(navMap).forEach(function(id){
+      var s=document.getElementById(id);
+      if(s)sio.observe(s);
+    });
+  }
+
+  /* releases: latest tag in the CTAs, last three as a mini changelog */
+  fetch('https://api.github.com/repos/JAEYOONSUNG/PostGrabbit/releases?per_page=3')
+    .then(function(r){return r.ok?r.json():null})
+    .then(function(rel){
+      if(!rel||!rel.length)return;
+      var ko=document.documentElement.lang==='ko';
+      function when(iso){
+        if(!iso)return'';
+        return new Date(iso).toLocaleDateString(ko?'ko-KR':'en-US',{year:'numeric',month:'short',day:'numeric'});
+      }
+      var j=rel[0];
+      if(j.tag_name){
+        var w=when(j.published_at);
+        ['release-note','dl-note'].forEach(function(id){
+          var el=document.getElementById(id);
+          if(el)el.innerHTML='<b>'+j.tag_name+'</b>'+(w?' · '+w:'')+' · macOS · Apple silicon';
+        });
+      }
+      var list=document.getElementById('rel-list');
+      if(!list)return;
+      rel.forEach(function(r){
+        if(!r.tag_name)return;
+        var a=document.createElement('a');
+        a.href=r.html_url;
+        var tag=document.createElement('span');tag.className='rel-tag';tag.textContent=r.tag_name;
+        var name=document.createElement('span');name.className='rel-name';
+        name.textContent=(r.name&&r.name!==r.tag_name)?r.name:(ko?'릴리스 노트':'Release notes');
+        var date=document.createElement('span');date.className='rel-date';date.textContent=when(r.published_at);
+        a.appendChild(tag);a.appendChild(name);a.appendChild(date);
+        list.appendChild(a);
+      });
+      if(list.children.length)list.hidden=false;
     }).catch(function(){});
 })();
 </script>
