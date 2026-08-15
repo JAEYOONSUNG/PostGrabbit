@@ -413,15 +413,15 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
 .phone{width:266px;border-radius:56px;padding:9px;background:linear-gradient(160deg,#51545C,#2B2D34 42%,#1D1F25);box-shadow:0 1px 0 rgba(255,255,255,.28) inset,0 36px 84px -34px rgba(16,20,26,.55),0 12px 28px -14px rgba(16,20,26,.35);position:relative}
 .phone::before{content:"";position:absolute;inset:2.5px;border-radius:53.5px;border:1.5px solid rgba(255,255,255,.13);pointer-events:none}
 .phone::after{content:"";position:absolute;right:-2.5px;top:96px;width:2.5px;height:52px;border-radius:2px;background:#3A3D45}
-.p-screen{border-radius:47px;overflow:hidden;background:var(--paper);position:relative;border:1px solid rgba(0,0,0,.4)}
+.p-screen{border-radius:47px;overflow:hidden;background:var(--paper);position:relative;border:1px solid rgba(0,0,0,.4);height:540px;display:flex;flex-direction:column}
 .p-island{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:86px;height:25px;border-radius:15px;background:#0A0C10;z-index:5}
 .p-island::after{content:"";position:absolute;right:8px;top:7.5px;width:10px;height:10px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#20304A,#0B111C 65%)}
 .p-status{display:flex;justify-content:space-between;align-items:center;padding:13px 24px 0;font-size:12px;font-weight:600;color:var(--ink)}
-.p-status svg{width:52px;height:11px;fill:var(--ink)}
+.p-status svg{width:58px;height:12px;fill:var(--ink);color:var(--ink)}
 .p-bar{display:flex;align-items:center;justify-content:space-between;padding:10px 14px 5px;font-family:var(--mono);font-size:8.5px;color:var(--band-n)}
 .p-off{display:inline-flex;align-items:center;gap:4px;border:1px solid var(--line);border-radius:99px;padding:1px 7px;color:var(--ink-soft)}
 .p-off i{width:5px;height:5px;border-radius:50%;background:var(--band-c)}
-.p-list{padding:6px 9px 12px;display:flex;flex-direction:column;gap:7px}
+.p-list{padding:6px 9px 12px;display:flex;flex-direction:column;gap:8px;flex:1}
 .p-card{border:1px solid var(--line-soft);border-radius:10px;padding:8px 10px;background:var(--paper-raise);position:relative}
 .p-top{display:flex;align-items:center;gap:6px}
 .p-title{font-weight:600;font-size:10.5px;line-height:1.35}
@@ -684,21 +684,21 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
     </div>
 
     <div class="mock-frame" aria-hidden="true">
-      <span class="callout co-band">scored against your CV ·</span>
-      <span class="callout co-read">read out of the advert ·</span>
-      <span class="callout co-rail">every source, counted</span>
+      <span class="callout co-band"><span class="en">scored against your CV ·</span><span class="ko">CV에 대조된 밴드 ·</span></span>
+      <span class="callout co-read"><span class="en">read out of the advert ·</span><span class="ko">공고문에서 판독 ·</span></span>
+      <span class="callout co-rail"><span class="en">every source, counted</span><span class="ko">모든 소스가 세어짐</span></span>
       <div class="mock">
         <div class="mock-bar">
           <span class="dot" style="background:#F26D5F"></span>
           <span class="dot" style="background:#F2BE4C"></span>
           <span class="dot" style="background:#5CC461"></span>
-          <span class="mock-title">PostGrabbit — 공고 1,882 · 지도 · PI 42</span>
-          <span class="mk-live"><i></i>수집 중</span>
-          <span class="mk-toggle">제한 숨김<i></i></span>
+          <span class="mock-title">PostGrabbit — <span class="en">1,882 postings · Map · 42 PIs</span><span class="ko">공고 1,882 · 지도 · PI 42</span></span>
+          <span class="mk-live"><i></i><span class="en">collecting</span><span class="ko">수집 중</span></span>
+          <span class="mk-toggle"><span class="en">hide restricted</span><span class="ko">제한 숨김</span><i></i></span>
         </div>
         <div class="mock-body">
           <div class="mock-rail">
-            <div class="rail-item on"><span>전체</span><b class="flip"><span class="n1">1882</span><span class="n2">1893</span></b></div>
+            <div class="rail-item on"><span><span class="en">All</span><span class="ko">전체</span></span><b class="flip"><span class="n1">1882</span><span class="n2">1893</span></b></div>
             <div class="rail-item"><span>euraxess</span><b>412</b></div>
             <div class="rail-item"><span>linkedin</span><b>388</b></div>
             <div class="rail-item"><span>jobs.ac.uk</span><b>217</b></div>
@@ -886,7 +886,7 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
           <g class="alab"><rect x="199" y="42" width="66" height="17" rx="5"/><text x="232" y="53.5" text-anchor="middle">Boston · 9</text><line x1="199" y1="50" x2="192" y2="49"/></g>
           <g class="alab"><rect x="183" y="158" width="58" height="17" rx="5"/><text x="212" y="169.5" text-anchor="middle">Seoul · 7</text><line x1="183" y1="164" x2="176" y2="154"/></g>
         </svg>
-        <p class="atlas-cap">columns = postings per city · precision: city</p>
+        <p class="atlas-cap"><span class="en">columns = postings per city · precision: city</span><span class="ko">컬럼 = 도시별 공고 수 · 정밀도: 도시</span></p>
         <svg class="net" viewBox="0 0 320 78">
           <line class="n-edge e1" x1="86" y1="40" x2="150" y2="18"/>
           <line class="n-edge e2" x1="86" y1="40" x2="158" y2="52"/>
@@ -902,8 +902,8 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
           <circle class="n-node" cx="222" cy="26" r="4"/>
           <circle class="n-node" cx="236" cy="58" r="4"/>
           <circle class="n-node n-sug" cx="278" cy="44" r="5"/>
-          <text class="n-lbl" x="86" y="62" text-anchor="middle">watched PI</text>
-          <text class="n-lbl n-lbl-sug" x="278" y="66" text-anchor="middle">suggested</text>
+          <text class="n-lbl en" x="86" y="62" text-anchor="middle">watched PI</text><text class="n-lbl ko" x="86" y="62" text-anchor="middle">관심 PI</text>
+          <text class="n-lbl n-lbl-sug en" x="278" y="66" text-anchor="middle">suggested</text><text class="n-lbl n-lbl-sug ko" x="278" y="66" text-anchor="middle">추천</text>
         </svg>
       </div>
     </div>
@@ -1011,7 +1011,7 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
             <circle class="kg-pt" cx="318" cy="214" r="5"/>
             <circle class="kg-po" cx="150" cy="284" r="0"/>
             <text x="190" y="176" text-anchor="middle">Prof. A. Vantera</text>
-            <text x="118" y="66" text-anchor="middle">co-author · 48 papers</text>
+            <text class="en" x="118" y="66" text-anchor="middle">co-author · 48 papers</text><text class="ko" x="118" y="66" text-anchor="middle">공저자 · 공동논문 48편</text>
             <text x="232" y="50" text-anchor="middle">Science '25</text>
             <text x="318" y="232" text-anchor="middle">patent US-2025-…</text>
             <text x="66" y="178" text-anchor="middle">Nat. Biotech '26</text>
@@ -1086,9 +1086,9 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
             <div class="p-island"></div>
             <div class="p-status">
               <span>9:41</span>
-              <svg viewBox="0 0 52 11" aria-hidden="true"><rect x="0" y="6" width="2.6" height="4" rx="1"/><rect x="4" y="4.4" width="2.6" height="5.6" rx="1"/><rect x="8" y="2.6" width="2.6" height="7.4" rx="1"/><rect x="12" y="1" width="2.6" height="9" rx="1"/><path d="M24.5 3.7a6.5 6.5 0 0 1 8.2 0l-1.3 1.5a4.5 4.5 0 0 0-5.6 0Zm2 2.4a3.4 3.4 0 0 1 4.2 0L29.3 7.7a1.4 1.4 0 0 0-1.6 0Z M28.6 10l1.6-1.8a1.2 1.2 0 0 0-3.2 0Z"/><rect x="38" y="1.6" width="12" height="7.8" rx="2.4" fill="none" stroke="currentColor" stroke-width="1" opacity=".45"/><rect x="39.4" y="3" width="7.4" height="5" rx="1.2"/><rect x="50.8" y="4" width="1.2" height="3" rx=".6" opacity=".45"/></svg>
+              <svg viewBox="0 0 55 12" aria-hidden="true"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="3" width="3" height="8" rx="1"/><rect x="13.5" y="1" width="3" height="10" rx="1"/><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M22.4 4.9a8.2 8.2 0 0 1 10.6 0"/><path d="M24.6 7.6a5 5 0 0 1 6.2 0"/></g><circle cx="27.7" cy="10.2" r="1.5"/><rect x="38.5" y="1.5" width="13" height="9" rx="2.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".4"/><rect x="40.1" y="3.1" width="8.6" height="5.8" rx="1.4"/><rect x="52.6" y="4.2" width="1.6" height="3.6" rx=".8" opacity=".4"/></svg>
             </div>
-            <div class="p-bar"><span>postgrabbit</span><span class="p-off"><i></i>synced 09:41</span></div>
+            <div class="p-bar"><span>postgrabbit</span><span class="p-off"><i></i><span class="en">synced 09:41</span><span class="ko">동기화 09:41</span></span></div>
             <div class="p-list">
               <div class="p-card">
                 <span class="p-star">★</span>
@@ -1107,9 +1107,17 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
                 <div class="p-top"><span class="chip b">B</span><span class="p-title">Group Leader — synthetic biology</span></div>
                 <div class="p-sub">MPI · Marburg · 5y</div>
               </div>
+              <div class="p-card">
+                <div class="p-top"><span class="chip a">A</span><span class="p-title">Postdoc — engineered gene circuits</span></div>
+                <div class="p-sub">KAIST · Daejeon · visa n/a</div>
+              </div>
+              <div class="p-card">
+                <div class="p-top"><span class="chip c">C</span><span class="p-title">Staff Scientist — protein design</span></div>
+                <div class="p-sub">NIH · Bethesda, MD · no deadline</div>
+              </div>
             </div>
-            <div class="p-toast">✓ 별표 1건 → Mac으로 동기화</div>
-            <div class="p-tabs"><b>공고</b><span>지도</span><span>PI</span><span>보관함</span></div>
+            <div class="p-toast">✓ <span class="en">1 star → synced to your Mac</span><span class="ko">별표 1건 → Mac으로 동기화</span></div>
+            <div class="p-tabs"><b><span class="en">Jobs</span><span class="ko">공고</span></b><span><span class="en">Map</span><span class="ko">지도</span></span><span>PI</span><span><span class="en">Archive</span><span class="ko">보관함</span></span></div>
           </div>
         </div>
       </div>
