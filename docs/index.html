@@ -7,9 +7,15 @@
 <meta name="description" content="PostGrabbit collects postdoc, PhD and faculty postings from fifteen sources, scores them against your CV, reads visa terms out of the advert, and keeps every note — locally, with no account and no server.">
 <meta property="og:title" content="PostGrabbit">
 <meta property="og:description" content="The academic job search, running on your own machine. Fifteen sources, CV-based scoring, visa-term reading, PI tracking — no account, no server.">
-<meta property="og:image" content="https://jaeyoonsung.github.io/PostGrabbit/assets/logo.png">
-<link rel="icon" href="assets/logo.png">
-<link rel="apple-touch-icon" href="assets/logo.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jaeyoonsung.github.io/PostGrabbit/">
+<meta property="og:image" content="https://jaeyoonsung.github.io/PostGrabbit/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://jaeyoonsung.github.io/PostGrabbit/assets/og.png">
+<link rel="icon" href="assets/logo.png?v=2">
+<link rel="apple-touch-icon" href="assets/logo.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -287,7 +293,7 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
 
 <header id="hd">
   <div class="wrap nav">
-    <a class="brand" href="#"><img src="assets/logo.png" alt=""> PostGrabbit</a>
+    <a class="brand" href="#"><img src="assets/logo.png?v=2" alt=""> PostGrabbit</a>
     <a class="item" href="#pipeline"><span class="en">What it does</span><span class="ko">기능</span></a>
     <a class="item" href="#privacy"><span class="en">Privacy</span><span class="ko">프라이버시</span></a>
     <a class="item" href="#usage"><span class="en">How to use</span><span class="ko">사용법</span></a>
@@ -761,7 +767,7 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-about">
-        <a class="brand" href="#"><img src="assets/logo.png" alt="" style="width:22px;height:22px"> PostGrabbit</a>
+        <a class="brand" href="#"><img src="assets/logo.png?v=2" alt="" style="width:22px;height:22px"> PostGrabbit</a>
         <p>
           <span class="en">A desktop app that finds academic job postings, keeps them in one place, and helps you decide which are worth an application — entirely on your own machine.</span>
           <span class="ko">학계 공고를 찾아 한 곳에 모으고, 어디에 지원할 가치가 있는지 판단을 돕는 데스크톱 앱 — 전부 당신의 컴퓨터 안에서.</span>
@@ -801,10 +807,13 @@ function setLang(l){
     :'PostGrabbit — the academic job search, on your own machine';
 }
 (function(){
-  /* English is the default; only an explicit choice switches. */
+  /* English is the default; only an explicit choice (or ?lang=) switches. */
   var saved=null;
   try{saved=localStorage.getItem('pg-lang')}catch(e){}
-  if(saved==='ko')setLang('ko');
+  var q=null;
+  try{q=new URLSearchParams(location.search).get('lang')}catch(e){}
+  if(q==='ko'||q==='en')setLang(q);
+  else if(saved==='ko')setLang('ko');
 
   /* header shadow on scroll */
   var hd=document.getElementById('hd');
