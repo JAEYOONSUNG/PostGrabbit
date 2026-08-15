@@ -13,6 +13,8 @@ boards themselves.
 silicon) ·
 **[Website →](https://jaeyoonsung.github.io/PostGrabbit/)** (한국어/English)
 
+![The academic job search, running on your own machine](docs/assets/og.png)
+
 ---
 
 ## What it does
@@ -39,9 +41,17 @@ a background check, and from paperwork like badging.
 one, so you can see where the work actually is rather than one column per
 country.
 
-**Follows people, not only postings.** Add a PI and the app tracks their
-papers, patents, topics and lab homepage, draws the network around them, and
-tells you when something new appears.
+**Follows people, not only postings.** Add a PI and the app assembles the
+dossier from Semantic Scholar and OpenAlex — h-index, citations, research
+topics, recent papers, patents, news, the co-author network — watches their
+lab homepage for genuine hiring language, and nudges you when a follow-up
+you promised goes quiet.
+
+**Rides along on your phone.** Pair once with a six-digit email code and
+your postings, map and watched PIs are readable from your phone even while
+the Mac sleeps. Stars, statuses and notes made there sync back to the Mac
+without overwriting anything; the viewer installs as an app and keeps what
+you've opened readable offline. Your CV and API keys never leave the Mac.
 
 **Keeps your work.** Notes per posting, an interview preparation pad, a
 kanban of what you have applied to, and drag-to-order lists.
@@ -165,6 +175,13 @@ postings, notes and letters all survive.
 pages from the job boards, and queries Semantic Scholar, OpenAlex, Crossref
 and OpenStreetMap when you explicitly look up a PI or an institute. Optional
 AI features call the provider you configured, with your own key.
+
+**Can I use it from my phone?** Yes — pair the phone viewer with a
+six-digit email code. It shows your postings, map and watched PIs even
+while the Mac is asleep, works offline for what you've opened, and syncs
+your edits back conflict-safely. Alternatively the full dashboard can be
+served over your own Tailscale network. Both are off until you turn them
+on.
 
 **Why no LinkedIn applicant counts?** LinkedIn shows that number only to
 signed-in sessions, and the app will not sign in on your behalf — it reads
