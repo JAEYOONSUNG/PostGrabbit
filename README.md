@@ -1,5 +1,7 @@
 # PostGrabbit
 
+<p align="center"><img src="assets/logo.png" width="96" alt="PostGrabbit"></p>
+
 A desktop app that finds academic job postings, keeps them in one place, and
 helps you decide which are worth an application.
 
@@ -8,7 +10,8 @@ nothing about your search leaves your computer except the requests to the job
 boards themselves.
 
 **[Download the latest release →](../../releases/latest)** · macOS (Apple
-silicon)
+silicon) ·
+**[Website →](https://jaeyoonsung.github.io/PostGrabbit/)** (한국어/English)
 
 ---
 
@@ -76,6 +79,43 @@ Then choose, on the same screen:
 
 Everything else is optional and each item says which feature it turns on.
 
+## How the app is laid out
+
+Everything happens in one window with a rail on the left and a list in the
+middle.
+
+- **The list** is where you spend most of your time: one card per posting,
+  with its fit band (A to N), source, deadline, and any pay, contract or visa
+  terms the app pulled out of the advert. Click a card and the full advert
+  opens beside it, formatted the way the site published it — headings, lists,
+  tables — not a stripped excerpt.
+- **The rail** filters by band, role, region, source and status, and every
+  count in it matches the list you are looking at. Findings that end an
+  application (citizenship, clearance, no sponsorship) get a red marker and a
+  one-click "hide restricted" switch.
+- **The map** is a globe that places each posting in its city, where the
+  advert names one. A pin is marked with its precision — city or campus — so
+  a city-level pin is never mistaken for an address.
+- **People** is the PI watchlist. Add a PI and the app tracks their papers,
+  patents, topics and lab homepage, draws the co-author network around them,
+  and nudges you when you said you would follow up.
+- **The board** is a kanban of your applications: reviewing, applied,
+  interview. Postings and PIs can both be dragged into your own order.
+- **Settings** holds the schedule, the searched countries and roles, source
+  health (which feeds came back empty or broken last run), backup, and
+  updates.
+
+## A typical day with it
+
+1. The scheduler ran overnight; the badge tells you what arrived.
+2. Skim the A and B bands. Hide anything with a red eligibility finding.
+3. Star what looks real, and write what you learn in the posting's note —
+   notes are markdown, with task boxes that survive reloads.
+4. When you apply, move the card on the board. Applied and interview postings
+   grow an interview-preparation pad next to the note.
+5. Once a week, glance at source health in Settings so a dead feed never
+   fails silently, and take a one-click backup if the week mattered.
+
 ## Where your data lives
 
 ```
@@ -118,6 +158,30 @@ postings, notes and letters all survive.
   browser tab
 
 ---
+
+## Questions people actually ask
+
+**Does anything about my search leave my computer?** No. The app requests
+pages from the job boards, and queries Semantic Scholar, OpenAlex, Crossref
+and OpenStreetMap when you explicitly look up a PI or an institute. Optional
+AI features call the provider you configured, with your own key.
+
+**Why no LinkedIn applicant counts?** LinkedIn shows that number only to
+signed-in sessions, and the app will not sign in on your behalf — it reads
+public pages at a polite rate and never risks your account. There is a
+hand-kept applicant log instead, and the UI says so.
+
+**Why is a posting greyed out or marked red?** The advert states a condition
+you cannot meet by applying harder — citizenship, a security clearance, or a
+blanket refusal of visa sponsorship. Amber findings (background checks,
+foreign-national conditions) can be met but might not be; plain paperwork
+like badging is left neutral.
+
+**A source shows zero for weeks — is it broken?** Maybe, and the app will say
+so: Settings reports feeds whose recent runs all came back empty, and the
+last run's errors, rather than logging "success, 0" forever.
+
+**Windows? Intel Macs?** The packaged app is macOS on Apple silicon for now.
 
 ## Reporting a problem
 
