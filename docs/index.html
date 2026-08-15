@@ -12,25 +12,31 @@
 <link rel="apple-touch-icon" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --pine:#147A42;
   --pine-deep:#0C5530;
-  --ink:#122B1D;
-  --ink-soft:#43584B;
-  --paper:#FAFBF8;
+  --pine-wash:#EDF4EE;
+  --ink:#12241A;
+  --ink-soft:#4A5C50;
+  --paper:#F9FAF6;
   --paper-raise:#FFFFFF;
-  --line:#DCE4DD;
+  --paper-alt:#F2F5EF;
+  --line:#DFE5DC;
+  --line-soft:#E9EDE6;
+  --brass:#9C7C3C;
+  --brass-soft:#C4A96A;
   --band-a:#147A42;
   --band-b:#2B6CB0;
   --band-c:#B7791F;
   --band-n:#8A948C;
   --hard:#B93A2B;
   --amber:#B7791F;
-  --dark-bg:#0D2418;
-  --dark-ink:#E8F0E9;
-  --dark-soft:#9DB3A3;
+  --dark-bg:#0B2016;
+  --dark-bg-2:#0E271B;
+  --dark-ink:#EAF1EA;
+  --dark-soft:#9CB2A2;
   --dark-line:#1E3A29;
   --radius:14px;
   --sans:"IBM Plex Sans","IBM Plex Sans KR",-apple-system,"Apple SD Gothic Neo",sans-serif;
@@ -39,184 +45,247 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased}
-::selection{background:#BFE3CD}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16.5px;line-height:1.68;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.028;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+main,header,footer{position:relative;z-index:1}
+::selection{background:#C4E2CF}
 a{color:var(--pine-deep)}
 img{max-width:100%}
-.wrap{max-width:1060px;margin:0 auto;padding:0 24px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 26px}
 
 /* language toggle */
 html[lang="en"] .ko{display:none}
 html[lang="ko"] .en{display:none}
 html[lang="ko"] body{word-break:keep-all}
 
-/* header */
-header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;gap:22px;height:60px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--ink);text-decoration:none;font-size:17px;margin-right:auto}
-.brand img{width:26px;height:26px;border-radius:7px}
-.nav a.item{color:var(--ink-soft);text-decoration:none;font-size:14.5px}
+/* ————— header ————— */
+header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 86%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line-soft);transition:box-shadow .25s ease}
+header.scrolled{box-shadow:0 10px 30px -18px rgba(18,36,26,.25);border-bottom-color:var(--line)}
+.nav{display:flex;align-items:center;gap:24px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--ink);text-decoration:none;font-size:17px;margin-right:auto;letter-spacing:-.01em}
+.brand img{width:27px;height:27px;border-radius:7px;box-shadow:0 2px 8px -2px rgba(20,122,66,.4)}
+.nav a.item{color:var(--ink-soft);text-decoration:none;font-size:14px;letter-spacing:.01em}
 .nav a.item:hover{color:var(--pine-deep)}
-.lang{display:flex;border:1px solid var(--line);border-radius:99px;overflow:hidden;font-size:12.5px}
-.lang button{border:0;background:none;padding:5px 11px;cursor:pointer;font-family:var(--mono);color:var(--ink-soft)}
+.lang{display:flex;border:1px solid var(--line);border-radius:99px;overflow:hidden;font-size:12px;background:var(--paper-raise)}
+.lang button{border:0;background:none;padding:5px 12px;cursor:pointer;font-family:var(--mono);color:var(--ink-soft);letter-spacing:.04em}
 .lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
-.gh{display:inline-flex;align-items:center;gap:6px;color:var(--ink-soft);text-decoration:none;font-size:14.5px}
+.gh{display:inline-flex;align-items:center;gap:6px;color:var(--ink-soft);text-decoration:none;font-size:14px}
+.gh:hover{color:var(--pine-deep)}
 .gh svg{width:18px;height:18px;fill:currentColor}
-@media(max-width:760px){.nav a.item{display:none}}
+@media(max-width:820px){.nav a.item{display:none}}
 
-/* hero */
-.hero{padding:84px 0 30px}
-.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
-@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:44px}}
-h1{font-family:var(--serif);font-weight:500;font-size:clamp(38px,5.2vw,56px);line-height:1.12;letter-spacing:-0.01em}
-h1 em{font-style:italic;color:var(--pine)}
-html[lang="ko"] h1{font-weight:600;font-size:clamp(32px,4.6vw,48px);line-height:1.25}
-.lede{margin-top:22px;font-size:18px;color:var(--ink-soft);max-width:34em}
-.cta-row{margin-top:32px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 22px;border-radius:11px;text-decoration:none;font-weight:600;font-size:15.5px;transition:transform .15s ease,box-shadow .15s ease}
-.btn-primary{background:var(--pine);color:#fff;box-shadow:0 6px 18px -8px rgba(20,122,66,.55)}
-.btn-primary:hover{transform:translateY(-1px);box-shadow:0 10px 22px -8px rgba(20,122,66,.6)}
+/* ————— shared type ————— */
+.eyebrow{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);font-weight:500}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--brass-soft)}
+h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,5.6vw,62px);line-height:1.08;letter-spacing:-.022em;font-optical-sizing:auto}
+h1 em{font-style:italic;color:var(--pine);letter-spacing:-.01em}
+html[lang="ko"] h1{font-weight:600;font-size:clamp(33px,4.8vw,50px);line-height:1.24;letter-spacing:-.01em}
+h2{font-family:var(--serif);font-weight:500;font-size:clamp(29px,3.8vw,40px);line-height:1.16;margin-top:14px;letter-spacing:-.015em}
+h2 em{font-style:italic;color:var(--pine)}
+html[lang="ko"] h2{font-weight:600;line-height:1.3}
+.section-lede{margin-top:16px;color:var(--ink-soft);max-width:40em;font-size:17px}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+/* ————— hero ————— */
+.hero{padding:92px 0 26px}
+.hero-grid{display:grid;grid-template-columns:1fr .96fr;gap:64px;align-items:center}
+@media(max-width:940px){.hero-grid{grid-template-columns:1fr;gap:52px}}
+.lede{margin-top:24px;font-size:18.5px;color:var(--ink-soft);max-width:33em;line-height:1.7}
+.cta-row{margin-top:34px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 24px;border-radius:12px;text-decoration:none;font-weight:600;font-size:15.5px;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
+.btn-primary{background:linear-gradient(180deg,#178A4B,var(--pine));color:#fff;box-shadow:0 1px 0 rgba(255,255,255,.25) inset,0 8px 22px -8px rgba(20,122,66,.55)}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 1px 0 rgba(255,255,255,.25) inset,0 12px 26px -8px rgba(20,122,66,.6)}
 .btn-quiet{color:var(--ink);border:1px solid var(--line);background:var(--paper-raise)}
 .btn-quiet:hover{border-color:var(--pine)}
-.cta-note{font-size:13px;color:var(--ink-soft);font-family:var(--mono)}
-.trust{margin-top:26px;display:flex;gap:18px;flex-wrap:wrap;font-size:13.5px;color:var(--ink-soft)}
-.trust span{display:inline-flex;align-items:center;gap:7px}
-.trust b{color:var(--pine-deep);font-weight:600}
+.cta-note{font-size:12.5px;color:var(--ink-soft);font-family:var(--mono);letter-spacing:.02em;margin-top:12px}
+.cta-note b{color:var(--pine-deep);font-weight:500}
 
-/* app miniature */
-.mock{background:var(--paper-raise);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 24px 60px -30px rgba(18,43,29,.35);overflow:hidden;font-size:12.5px}
-.mock-bar{display:flex;align-items:center;gap:7px;padding:10px 14px;border-bottom:1px solid var(--line);background:#F3F6F2}
+/* annotated app miniature */
+.mock-frame{position:relative;padding:0 0 34px}
+.mock{background:var(--paper-raise);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 1px 0 rgba(255,255,255,.8) inset,0 30px 70px -32px rgba(18,43,29,.4),0 8px 20px -12px rgba(18,43,29,.18);overflow:hidden;font-size:12.5px}
+.mock-bar{display:flex;align-items:center;gap:7px;padding:11px 14px;border-bottom:1px solid var(--line-soft);background:linear-gradient(180deg,#F6F8F4,#F0F4EE)}
 .dot{width:11px;height:11px;border-radius:50%}
-.mock-title{margin-left:8px;color:var(--ink-soft);font-family:var(--mono);font-size:11.5px}
-.mock-body{display:grid;grid-template-columns:118px 1fr}
-.mock-rail{border-right:1px solid var(--line);padding:12px 0;background:#FBFCFA}
-.rail-item{display:flex;justify-content:space-between;padding:5px 12px;color:var(--ink-soft);font-size:11px}
-.rail-item.on{color:var(--pine-deep);font-weight:600;background:#EAF3ED;border-right:2px solid var(--pine)}
+.mock-title{margin-left:8px;color:var(--ink-soft);font-family:var(--mono);font-size:11px;letter-spacing:.02em}
+.mock-body{display:grid;grid-template-columns:120px 1fr}
+.mock-rail{border-right:1px solid var(--line-soft);padding:12px 0;background:#FAFBF8}
+.rail-item{display:flex;justify-content:space-between;padding:5px 12px;color:var(--ink-soft);font-size:10.5px}
+.rail-item.on{color:var(--pine-deep);font-weight:600;background:var(--pine-wash);box-shadow:-2px 0 0 var(--pine) inset}
 .rail-item b{font-family:var(--mono);font-weight:500}
 .mock-list{padding:10px}
-.card{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:9px;background:var(--paper-raise)}
+.card{border:1px solid var(--line-soft);border-radius:10px;padding:10px 12px;margin-bottom:9px;background:var(--paper-raise);box-shadow:0 1px 3px rgba(18,43,29,.04)}
 .card:last-child{margin-bottom:0}
 .card-top{display:flex;align-items:center;gap:8px}
-.chip{font-family:var(--mono);font-size:10.5px;font-weight:600;color:#fff;border-radius:5px;padding:2px 6px;line-height:1.3}
+.chip{font-family:var(--mono);font-size:10.5px;font-weight:600;color:#fff;border-radius:5px;padding:2px 6px;line-height:1.3;flex:none}
 .chip.a{background:var(--band-a)}.chip.b{background:var(--band-b)}.chip.c{background:var(--band-c)}
 .card-title{font-weight:600;font-size:12.5px}
-.card-sub{margin-top:3px;color:var(--ink-soft);font-size:11px}
+.card-sub{margin-top:3px;color:var(--ink-soft);font-size:10.8px}
 .tag-row{margin-top:7px;display:flex;gap:6px;flex-wrap:wrap}
 .tag{font-size:10px;border:1px solid var(--line);border-radius:5px;padding:1.5px 6px;color:var(--ink-soft);font-family:var(--mono)}
 .tag.hard{color:var(--hard);border-color:#E5C0BA;background:#FBF1EF}
 .tag.amber{color:#8A5B14;border-color:#E7D3AE;background:#FBF5E8}
 .tag.ok{color:var(--pine-deep);border-color:#BFDCCB;background:#EFF7F1}
-@media(max-width:420px){.mock-rail{display:none}.mock-body{grid-template-columns:1fr}}
+@media(max-width:430px){.mock-rail{display:none}.mock-body{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:no-preference){
   .card{opacity:0;transform:translateY(10px);animation:rise .6s ease forwards}
-  .card:nth-child(1){animation-delay:.15s}.card:nth-child(2){animation-delay:.3s}.card:nth-child(3){animation-delay:.45s}
+  .card:nth-child(1){animation-delay:.2s}.card:nth-child(2){animation-delay:.38s}.card:nth-child(3){animation-delay:.56s}
   @keyframes rise{to{opacity:1;transform:none}}
 }
+.callout{position:absolute;font-family:var(--mono);font-size:10.5px;color:var(--brass);letter-spacing:.05em;white-space:nowrap}
+.callout::before{content:"";position:absolute;width:1px;background:var(--brass-soft);opacity:.7}
+.co-band{right:18px;top:-26px}
+.co-band::before{height:20px;right:10px;top:100%;margin-top:4px}
+.co-read{right:18px;top:calc(100% - 22px)}
+.co-read::before{height:20px;right:10px;bottom:100%;margin-bottom:4px}
+.co-rail{left:34px;top:calc(100% - 22px)}
+.co-rail::before{height:26px;left:14px;bottom:100%;margin-bottom:4px}
+@media(max-width:940px){.callout{display:none}.mock-frame{padding-bottom:0}}
 
-/* sections */
-section{padding:88px 0}
-.eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--pine);font-weight:500}
-h2{font-family:var(--serif);font-weight:500;font-size:clamp(28px,3.6vw,38px);line-height:1.2;margin-top:10px;letter-spacing:-0.005em}
-html[lang="ko"] h2{font-weight:600;line-height:1.3}
-.section-lede{margin-top:14px;color:var(--ink-soft);max-width:38em}
+/* stat strip */
+.stats{margin:64px 0 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:26px 10px;text-align:center;border-left:1px solid var(--line)}
+.stat:first-child{border-left:0}
+.stat b{display:block;font-family:var(--serif);font-size:32px;font-weight:500;letter-spacing:-.01em;color:var(--pine-deep)}
+.stat span{display:block;margin-top:4px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+@media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}.stat:nth-child(3){border-left:0}.stat:nth-child(n+3){border-top:1px solid var(--line)}}
 
-/* pipeline steps */
-.step{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;padding:52px 0;border-top:1px solid var(--line)}
-.step:first-of-type{border-top:0;padding-top:44px}
+/* ————— sections ————— */
+section{padding:100px 0}
+.step{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;padding:64px 0;border-top:1px solid var(--line);position:relative}
+.step:first-of-type{border-top:0;padding-top:52px}
 .step:nth-child(even) .step-visual{order:-1}
-@media(max-width:860px){.step{grid-template-columns:1fr;gap:26px}.step:nth-child(even) .step-visual{order:0}}
-.step-num{font-family:var(--mono);font-size:13px;color:var(--pine);font-weight:500}
-h3{font-family:var(--serif);font-weight:500;font-size:26px;margin-top:6px;line-height:1.25}
-html[lang="ko"] h3{font-weight:600;font-size:23px}
-.step p{margin-top:12px;color:var(--ink-soft);font-size:15.5px}
-.step-visual{background:var(--paper-raise);border:1px solid var(--line);border-radius:var(--radius);padding:22px;font-size:12.5px}
+@media(max-width:880px){.step{grid-template-columns:1fr;gap:30px}.step:nth-child(even) .step-visual{order:0}}
+.ghost{position:absolute;top:34px;right:-8px;font-family:var(--serif);font-style:italic;font-size:120px;line-height:1;color:var(--brass);opacity:.09;pointer-events:none;font-weight:400}
+.step:nth-child(even) .ghost{right:auto;left:-8px}
+@media(max-width:880px){.ghost{font-size:84px;top:20px}}
+.step-num{font-family:var(--mono);font-size:12px;color:var(--brass);font-weight:500;letter-spacing:.18em}
+h3{font-family:var(--serif);font-weight:500;font-size:28px;margin-top:8px;line-height:1.22;letter-spacing:-.012em}
+html[lang="ko"] h3{font-weight:600;font-size:24px}
+.step>div>p{margin-top:14px;color:var(--ink-soft);font-size:15.5px}
+.micro{margin-top:18px;list-style:none;display:flex;flex-direction:column;gap:9px}
+.micro li{position:relative;padding-left:22px;font-size:14.5px;color:var(--ink-soft)}
+.micro li::before{content:"";position:absolute;left:2px;top:9px;width:8px;height:1.5px;background:var(--brass)}
+.micro li b{color:var(--ink);font-weight:600}
+.step-visual{background:var(--paper-raise);border:1px solid var(--line);border-radius:var(--radius);padding:24px;font-size:12.5px;box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 16px 40px -28px rgba(18,43,29,.3)}
 .viz-list{display:flex;flex-direction:column;gap:8px}
-.viz-row{display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--line);border-radius:8px}
-.viz-row .chip{flex:none}
-.viz-row s{color:var(--band-n);text-decoration-thickness:2px}
+.viz-row{display:flex;align-items:center;gap:10px;padding:9px 11px;border:1px solid var(--line-soft);border-radius:8px;background:var(--paper-raise)}
+.viz-row s{color:var(--band-n);text-decoration-thickness:1.5px}
+.viz-row .why{margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--band-n)}
 .sev{width:9px;height:9px;border-radius:50%;flex:none}
 .sev.r{background:var(--hard)}.sev.y{background:var(--amber)}.sev.g{background:var(--band-n)}
-.viz-quote{font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);line-height:1.6}
+.viz-quote{font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);line-height:1.75}
 .viz-quote mark{background:#FBE9E6;color:var(--hard);padding:1px 3px;border-radius:3px}
 .viz-quote mark.y{background:#FBF3DD;color:#8A5B14}
-.globe{display:flex;align-items:center;justify-content:center;padding:6px 0}
+.viz-quote mark.g{background:#EFF7F1;color:var(--pine-deep)}
+.globe{display:flex;align-items:center;justify-content:center;padding:8px 0}
 .sources{display:flex;flex-wrap:wrap;gap:7px}
-.src{font-family:var(--mono);font-size:11px;border:1px solid var(--line);border-radius:99px;padding:3px 10px;color:var(--ink-soft);background:var(--paper-raise)}
-.src.hot{border-color:var(--pine);color:var(--pine-deep)}
+.src{font-family:var(--mono);font-size:11px;border:1px solid var(--line);border-radius:99px;padding:3.5px 11px;color:var(--ink-soft);background:var(--paper-raise)}
+.src.hot{border-color:#BFDCCB;color:var(--pine-deep);background:var(--pine-wash)}
+.src-note{margin-top:14px;font-family:var(--mono);font-size:10.5px;color:var(--band-n);letter-spacing:.03em}
 .kanban{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.kan-col{border:1px solid var(--line);border-radius:8px;padding:8px;background:#FBFCFA}
-.kan-col h5{font-size:10.5px;font-family:var(--mono);color:var(--ink-soft);font-weight:500;margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em}
-.kan-card{background:var(--paper-raise);border:1px solid var(--line);border-radius:6px;padding:5px 7px;font-size:10.5px;margin-bottom:5px;line-height:1.4}
+.kan-col{border:1px solid var(--line-soft);border-radius:8px;padding:8px;background:#FAFBF8}
+.kan-col h5{font-size:10px;font-family:var(--mono);color:var(--ink-soft);font-weight:500;margin-bottom:6px;text-transform:uppercase;letter-spacing:.08em}
+.kan-card{background:var(--paper-raise);border:1px solid var(--line-soft);border-radius:6px;padding:5px 7px;font-size:10.5px;margin-bottom:5px;line-height:1.4;box-shadow:0 1px 2px rgba(18,43,29,.05)}
+.kan-card.star{border-color:#E7D3AE}
 
-/* dark privacy band */
-.dark{background:var(--dark-bg);color:var(--dark-ink)}
-.dark .eyebrow{color:#6FCF97}
+/* ————— dark privacy band ————— */
+.dark{background:radial-gradient(120% 140% at 50% -20%,var(--dark-bg-2),var(--dark-bg));color:var(--dark-ink);border-top:1px solid var(--dark-line);border-bottom:1px solid var(--dark-line);position:relative}
+.dark::after{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(196,169,106,.5),transparent)}
+.dark .eyebrow{color:var(--brass-soft)}
+.dark .eyebrow::before{background:var(--brass)}
 .dark h2{color:#fff}
 .dark .section-lede{color:var(--dark-soft)}
-.priv-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;margin-top:36px;align-items:start}
-@media(max-width:860px){.priv-grid{grid-template-columns:1fr}}
-.priv-list{display:flex;flex-direction:column;gap:18px}
-.priv-item b{display:block;color:#fff;font-weight:600;font-size:15.5px}
+.priv-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:52px;margin-top:42px;align-items:start}
+@media(max-width:880px){.priv-grid{grid-template-columns:1fr}}
+.priv-list{display:flex;flex-direction:column;gap:22px}
+.priv-item{padding-left:20px;border-left:1px solid var(--dark-line)}
+.priv-item b{display:block;color:#fff;font-weight:600;font-size:16px}
 .priv-item span{color:var(--dark-soft);font-size:14.5px}
-.tree{background:#0A1D13;border:1px solid var(--dark-line);border-radius:var(--radius);padding:20px 22px;font-family:var(--mono);font-size:12.5px;line-height:1.9;color:var(--dark-soft);overflow-x:auto}
+.tree{background:#081810;border:1px solid var(--dark-line);border-radius:var(--radius);padding:22px 24px;font-family:var(--mono);font-size:12.5px;line-height:1.95;color:var(--dark-soft);overflow-x:auto;white-space:pre;box-shadow:0 0 0 1px rgba(196,169,106,.06),0 24px 50px -30px rgba(0,0,0,.6)}
 .tree b{color:#6FCF97;font-weight:500}
-.tree i{font-style:normal;color:#55705F}
+.tree i{font-style:normal;color:#54705F}
+.tree .cmt{color:#3E5A4B}
 
-/* how to use */
-.use-grid{counter-reset:use;display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:40px}
-@media(max-width:760px){.use-grid{grid-template-columns:1fr}}
-.use{counter-increment:use;background:var(--paper-raise);border:1px solid var(--line);border-radius:var(--radius);padding:26px 26px 24px;position:relative}
-.use::before{content:counter(use,decimal-leading-zero);font-family:var(--mono);font-size:12.5px;color:var(--pine);font-weight:500}
-.use h4{font-size:17.5px;font-weight:600;margin-top:8px}
+/* ————— how to use ————— */
+.alt{background:var(--paper-alt);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+.use-grid{counter-reset:use;display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:44px}
+@media(max-width:780px){.use-grid{grid-template-columns:1fr}}
+.use{counter-increment:use;background:var(--paper-raise);border:1px solid var(--line);border-radius:var(--radius);padding:28px 28px 26px;position:relative;box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 14px 34px -26px rgba(18,43,29,.28)}
+.use::before{content:counter(use,decimal-leading-zero);font-family:var(--serif);font-style:italic;font-size:30px;color:var(--brass);opacity:.85;line-height:1}
+.use h4{font-size:17.5px;font-weight:600;margin-top:10px}
 .use p{margin-top:8px;color:var(--ink-soft);font-size:14.5px}
-.use code{font-family:var(--mono);font-size:12.5px;background:#EFF4EF;border-radius:5px;padding:1px 6px}
-.use .req{display:inline-block;font-family:var(--mono);font-size:10.5px;color:var(--hard);border:1px solid #E5C0BA;border-radius:5px;padding:1px 6px;margin-left:6px;vertical-align:2px}
+.use code,.faq code{font-family:var(--mono);font-size:12.5px;background:#EFF3EE;border-radius:5px;padding:1px 6px}
+.use .req{display:inline-block;font-family:var(--mono);font-size:10px;color:var(--hard);border:1px solid #E5C0BA;border-radius:5px;padding:1px 6px;margin-left:6px;vertical-align:2px;letter-spacing:.05em}
+.kbd-row{margin-top:44px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:center;font-size:13.5px;color:var(--ink-soft)}
+.kbd-row kbd{font-family:var(--mono);font-size:12px;border:1px solid var(--line);border-bottom-width:2px;border-radius:6px;padding:2px 8px;background:var(--paper-raise);color:var(--ink)}
 
-/* architecture */
-.arch{margin-top:40px;background:var(--paper-raise);border:1px solid var(--line);border-radius:var(--radius);padding:34px 30px;overflow-x:auto}
-.flow{display:flex;align-items:stretch;gap:0;min-width:760px}
-.node{flex:1;border:1.5px solid var(--line);border-radius:11px;padding:14px 14px 12px;text-align:center;position:relative;background:var(--paper)}
-.node.core{border-color:var(--pine);background:#F0F7F2}
+/* ————— everything else ————— */
+.etc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:44px}
+@media(max-width:960px){.etc-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.etc-grid{grid-template-columns:1fr}}
+.etc{background:var(--paper-raise);padding:24px 22px}
+.etc:hover{background:#FDFEFC}
+.etc b{display:block;font-weight:600;font-size:14.5px}
+.etc p{margin-top:6px;font-size:13px;color:var(--ink-soft);line-height:1.6}
+.etc .glyph{font-family:var(--serif);font-style:italic;color:var(--brass);font-size:18px;line-height:1;display:block;margin-bottom:10px}
+
+/* ————— architecture ————— */
+.arch{margin-top:44px;background:var(--paper-raise);border:1px solid var(--line);border-radius:var(--radius);padding:36px 32px;overflow-x:auto;box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 16px 40px -28px rgba(18,43,29,.3)}
+.flow{display:flex;align-items:stretch;min-width:780px}
+.node{flex:1;border:1px solid var(--line);border-radius:11px;padding:15px 14px 13px;text-align:center;background:var(--paper)}
+.node.core{border-color:var(--pine);background:var(--pine-wash);box-shadow:0 0 0 3px #EDF4EE}
 .node b{display:block;font-size:14px;font-weight:600}
-.node span{display:block;font-size:11.5px;color:var(--ink-soft);margin-top:4px;line-height:1.45}
+.node span{display:block;font-size:11.5px;color:var(--ink-soft);margin-top:4px;line-height:1.5}
 .node code{font-family:var(--mono);font-size:10.5px;color:var(--pine-deep)}
-.arrow{align-self:center;padding:0 10px;color:var(--band-n);flex:none;font-family:var(--mono)}
-.arch-note{margin-top:22px;font-size:13.5px;color:var(--ink-soft);display:flex;gap:8px}
+.arrow{align-self:center;padding:0 10px;color:var(--brass);flex:none;font-family:var(--mono)}
+.arch-note{margin-top:24px;font-size:13.5px;color:var(--ink-soft);display:flex;gap:10px;border-top:1px dashed var(--line);padding-top:20px}
 .arch-note b{color:var(--pine-deep)}
+.arch-note .plus{font-family:var(--serif);font-style:italic;color:var(--brass);font-size:18px;line-height:1.2}
 .mods{margin-top:26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
-.mod{border:1px solid var(--line);border-radius:10px;padding:16px 18px;background:var(--paper-raise)}
+.mod{border:1px solid var(--line);border-radius:10px;padding:18px 20px;background:var(--paper-raise)}
 .mod code{font-family:var(--mono);font-size:12px;color:var(--pine-deep)}
 .mod p{font-size:13.5px;color:var(--ink-soft);margin-top:6px}
 
-/* download */
-.dl{background:var(--paper-raise);border:1px solid var(--line);border-radius:20px;padding:56px 30px;text-align:center}
-.dl h2{margin-top:12px}
+/* ————— download ————— */
+.dl-outer{border:1px solid var(--line);border-radius:22px;padding:10px;background:var(--paper-raise)}
+.dl{border:1px solid var(--line-soft);border-radius:14px;padding:64px 30px;text-align:center;background:
+  radial-gradient(90% 120% at 50% 0%,var(--pine-wash),transparent 70%)}
+.dl .eyebrow{justify-content:center}
+.dl .eyebrow::after{content:"";width:26px;height:1px;background:var(--brass-soft)}
+.dl h2{margin-top:14px}
 .dl .cta-row{justify-content:center}
-.gatekeeper{margin:26px auto 0;max-width:560px;text-align:left;border:1px solid #E7D3AE;background:#FBF5E8;border-radius:11px;padding:14px 18px;font-size:14px;color:#6B4A12}
+.gatekeeper{margin:30px auto 0;max-width:580px;text-align:left;border:1px solid #E7D3AE;background:#FBF6E9;border-radius:11px;padding:15px 19px;font-size:14px;color:#6B4A12}
 .gatekeeper b{font-weight:600}
 
-/* faq */
-.faq{max-width:760px;margin:36px auto 0}
+/* ————— faq ————— */
+.faq{max-width:780px;margin:40px auto 0}
 details{border-bottom:1px solid var(--line)}
-summary{cursor:pointer;padding:18px 34px 18px 2px;font-weight:600;font-size:16px;list-style:none;position:relative}
+summary{cursor:pointer;padding:19px 36px 19px 2px;font-weight:600;font-size:16px;list-style:none;position:relative}
 summary::-webkit-details-marker{display:none}
-summary::after{content:"+";position:absolute;right:6px;top:15px;font-family:var(--mono);font-size:19px;color:var(--pine);transition:transform .2s}
+summary::after{content:"+";position:absolute;right:8px;top:16px;font-family:var(--serif);font-style:italic;font-size:20px;color:var(--brass);transition:transform .2s}
 details[open] summary::after{transform:rotate(45deg)}
-details div{padding:0 2px 20px;color:var(--ink-soft);font-size:15px;max-width:44em}
+details div{padding:0 2px 22px;color:var(--ink-soft);font-size:15px;max-width:46em}
 
-/* footer */
-footer{border-top:1px solid var(--line);padding:44px 0 56px;color:var(--ink-soft);font-size:14px}
-.foot{display:flex;gap:28px;flex-wrap:wrap;align-items:center}
-.foot a{color:var(--ink-soft)}
-.foot .brand{font-size:15px;margin-right:auto}
-.legal{margin-top:18px;font-size:12.5px;color:var(--band-n);max-width:52em}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+/* ————— footer ————— */
+footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft);font-size:14px;background:var(--paper-alt)}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px}
+@media(max-width:760px){.foot-grid{grid-template-columns:1fr}}
+.foot-grid h6{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);font-weight:500;margin-bottom:12px}
+.foot-grid ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.foot-grid a{color:var(--ink-soft);text-decoration:none}
+.foot-grid a:hover{color:var(--pine-deep);text-decoration:underline}
+.foot-about p{margin-top:10px;font-size:13.5px;max-width:30em}
+.colophon{margin-top:40px;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--band-n);font-family:var(--mono);letter-spacing:.02em}
 :focus-visible{outline:2px solid var(--pine);outline-offset:2px;border-radius:4px}
 </style>
 </head>
 <body>
 
-<header>
+<header id="hd">
   <div class="wrap nav">
     <a class="brand" href="#"><img src="assets/logo.png" alt=""> PostGrabbit</a>
     <a class="item" href="#pipeline"><span class="en">What it does</span><span class="ko">기능</span></a>
@@ -239,7 +308,8 @@ footer{border-top:1px solid var(--line);padding:44px 0 56px;color:var(--ink-soft
 <div class="wrap hero">
   <div class="hero-grid">
     <div>
-      <h1>
+      <p class="eyebrow"><span class="en">For the academic job hunt</span><span class="ko">학계 구직자를 위하여</span></p>
+      <h1 style="margin-top:18px">
         <span class="en">The academic job search, running <em>on your own machine.</em></span>
         <span class="ko">당신의 컴퓨터에서 돌아가는 <em>학계 잡서치.</em></span>
       </h1>
@@ -253,52 +323,58 @@ footer{border-top:1px solid var(--line);padding:44px 0 56px;color:var(--ink-soft
         </a>
         <a class="btn btn-quiet" href="#usage"><span class="en">How it works</span><span class="ko">사용법 보기</span></a>
       </div>
-      <p class="cta-note"><span class="en">Free · Apple silicon · .dmg</span><span class="ko">무료 · Apple silicon · .dmg</span></p>
-      <div class="trust">
-        <span><b>15+</b> <span class="en">job sources</span><span class="ko">개 공고 소스</span></span>
-        <span><b>A–N</b> <span class="en">fit bands</span><span class="ko">적합도 밴드</span></span>
-        <span><b>KO·EN</b> <span class="en">bilingual UI</span><span class="ko">이중 언어 UI</span></span>
-        <span><b>100%</b> <span class="en">local data</span><span class="ko">로컬 데이터</span></span>
-      </div>
+      <p class="cta-note" id="release-note"><span class="en">Free · Apple silicon · .dmg</span><span class="ko">무료 · Apple silicon · .dmg</span></p>
     </div>
 
-    <div class="mock" aria-hidden="true">
-      <div class="mock-bar">
-        <span class="dot" style="background:#F26D5F"></span>
-        <span class="dot" style="background:#F2BE4C"></span>
-        <span class="dot" style="background:#5CC461"></span>
-        <span class="mock-title">PostGrabbit — 공고 1,882 · 지도 · PI 42</span>
-      </div>
-      <div class="mock-body">
-        <div class="mock-rail">
-          <div class="rail-item on"><span>전체</span><b>1882</b></div>
-          <div class="rail-item"><span>euraxess</span><b>412</b></div>
-          <div class="rail-item"><span>linkedin</span><b>388</b></div>
-          <div class="rail-item"><span>jobs.ac.uk</span><b>217</b></div>
-          <div class="rail-item"><span>nature</span><b>139</b></div>
-          <div class="rail-item"><span>scholarshipdb</span><b>128</b></div>
-          <div class="rail-item"><span>korean</span><b>96</b></div>
-          <div class="rail-item"><span>lab pages</span><b>61</b></div>
+    <div class="mock-frame" aria-hidden="true">
+      <span class="callout co-band">scored against your CV ·</span>
+      <span class="callout co-read">read out of the advert ·</span>
+      <span class="callout co-rail">every source, counted</span>
+      <div class="mock">
+        <div class="mock-bar">
+          <span class="dot" style="background:#F26D5F"></span>
+          <span class="dot" style="background:#F2BE4C"></span>
+          <span class="dot" style="background:#5CC461"></span>
+          <span class="mock-title">PostGrabbit — 공고 1,882 · 지도 · PI 42</span>
         </div>
-        <div class="mock-list">
-          <div class="card">
-            <div class="card-top"><span class="chip a">A</span><span class="card-title">Postdoc — CRISPR genome engineering</span></div>
-            <div class="card-sub">ETH Zürich · Zürich, Switzerland · D-BSSE</div>
-            <div class="tag-row"><span class="tag ok">비자지원</span><span class="tag">CHF 105k</span><span class="tag">2y+1</span><span class="tag">마감 D-21</span></div>
+        <div class="mock-body">
+          <div class="mock-rail">
+            <div class="rail-item on"><span>전체</span><b>1882</b></div>
+            <div class="rail-item"><span>euraxess</span><b>412</b></div>
+            <div class="rail-item"><span>linkedin</span><b>388</b></div>
+            <div class="rail-item"><span>jobs.ac.uk</span><b>217</b></div>
+            <div class="rail-item"><span>nature</span><b>139</b></div>
+            <div class="rail-item"><span>scholarshipdb</span><b>128</b></div>
+            <div class="rail-item"><span>korean</span><b>96</b></div>
+            <div class="rail-item"><span>lab pages</span><b>61</b></div>
           </div>
-          <div class="card">
-            <div class="card-top"><span class="chip b">B</span><span class="card-title">Research Fellow — synthetic microbiology</span></div>
-            <div class="card-sub">University of Queensland · Brisbane, Australia</div>
-            <div class="tag-row"><span class="tag amber">background check</span><span class="tag">AUD 98k</span><span class="tag">3y</span></div>
-          </div>
-          <div class="card">
-            <div class="card-top"><span class="chip c">C</span><span class="card-title">Postdoctoral Scholar — protein design</span></div>
-            <div class="card-sub">NIH · Bethesda, MD, United States</div>
-            <div class="tag-row"><span class="tag hard">U.S. citizenship</span><span class="tag">deadline 없음</span></div>
+          <div class="mock-list">
+            <div class="card">
+              <div class="card-top"><span class="chip a">A</span><span class="card-title">Postdoc — CRISPR genome engineering</span></div>
+              <div class="card-sub">ETH Zürich · Zürich, Switzerland · D-BSSE</div>
+              <div class="tag-row"><span class="tag ok">visa sponsored</span><span class="tag">CHF 105k</span><span class="tag">2y+1</span><span class="tag">deadline D-21</span></div>
+            </div>
+            <div class="card">
+              <div class="card-top"><span class="chip b">B</span><span class="card-title">Research Fellow — synthetic microbiology</span></div>
+              <div class="card-sub">University of Queensland · Brisbane, Australia</div>
+              <div class="tag-row"><span class="tag amber">background check</span><span class="tag">AUD 98k</span><span class="tag">3y</span></div>
+            </div>
+            <div class="card">
+              <div class="card-top"><span class="chip c">C</span><span class="card-title">Postdoctoral Scholar — protein design</span></div>
+              <div class="card-sub">NIH · Bethesda, MD, United States</div>
+              <div class="tag-row"><span class="tag hard">U.S. citizenship</span><span class="tag">no deadline</span></div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="stats reveal">
+    <div class="stat"><b>15+</b><span class="en">job sources</span><span class="ko">공고 소스</span></div>
+    <div class="stat"><b>A–N</b><span class="en">fit bands</span><span class="ko">적합도 밴드</span></div>
+    <div class="stat"><b>3</b><span class="en">eligibility severities</span><span class="ko">자격 판정 단계</span></div>
+    <div class="stat"><b>0</b><span class="en">bytes uploaded</span><span class="ko">업로드되는 바이트</span></div>
   </div>
 </div>
 
@@ -306,22 +382,29 @@ footer{border-top:1px solid var(--line);padding:44px 0 56px;color:var(--ink-soft
   <div class="wrap">
     <p class="eyebrow"><span class="en">The pipeline</span><span class="ko">파이프라인</span></p>
     <h2>
-      <span class="en">Five things happen to every posting.</span>
-      <span class="ko">모든 공고는 다섯 단계를 거칩니다.</span>
+      <span class="en">Five things happen to <em>every</em> posting.</span>
+      <span class="ko">모든 공고는 <em>다섯 단계</em>를 거칩니다.</span>
     </h2>
     <p class="section-lede">
-      <span class="en">The numbers are the order the app actually works in — collection at the top, your own notes at the bottom.</span>
-      <span class="ko">번호는 장식이 아니라 앱이 실제로 일하는 순서입니다 — 맨 위가 수집, 맨 아래가 당신의 기록.</span>
+      <span class="en">The numbers are the order the app actually works in — collection at the top, your own record at the bottom. Nothing here is a mock-up of intent; each stage ships today.</span>
+      <span class="ko">번호는 장식이 아니라 앱이 실제로 일하는 순서입니다 — 맨 위가 수집, 맨 아래가 당신의 기록. 여기 있는 모든 단계는 지금 배포판에 들어 있습니다.</span>
     </p>
 
-    <div class="step">
+    <div class="step reveal">
+      <span class="ghost" aria-hidden="true">I</span>
       <div>
-        <p class="step-num">01</p>
-        <h3><span class="en">Collect, from everywhere at once</span><span class="ko">모은다 — 모든 곳에서 한 번에</span></h3>
+        <p class="step-num">01 — <span class="en">COLLECT</span><span class="ko">수집</span></p>
+        <h3><span class="en">From everywhere, at once, on schedule</span><span class="ko">모든 곳에서, 한 번에, 정해진 주기로</span></h3>
         <p>
-          <span class="en">LinkedIn, Indeed, Euraxess, ScholarshipDB, ResearchGate, Nature Careers, jobs.ac.uk, AcademicPositions, Korean boards (IBRIC, HiBrain, NRF, university pages) and individual lab websites — on a schedule you set. You choose which countries the general boards search; the academic feeds already cover Europe, the UK and Korea.</span>
-          <span class="ko">LinkedIn, Indeed, Euraxess, ScholarshipDB, ResearchGate, Nature Careers, jobs.ac.uk, AcademicPositions에 IBRIC·하이브레인·NRF·대학 공고 페이지, 개별 연구실 홈페이지까지 — 정해 둔 주기로 수집합니다. 일반 보드가 검색할 국가는 직접 고릅니다. 학계 피드는 유럽·영국·한국을 이미 덮고 있으니까요.</span>
+          <span class="en">A scheduler sweeps every source at the interval you choose and shows each feed's last run — so a board that quietly died never fails silently.</span>
+          <span class="ko">스케줄러가 정한 주기로 모든 소스를 훑고 피드별 최근 실행을 보여 줍니다 — 조용히 죽은 보드가 조용히 넘어가는 일이 없도록.</span>
         </p>
+        <ul class="micro">
+          <li><span class="en"><b>The general boards search the countries you tick.</b> Euraxess covers Europe, jobs.ac.uk the UK, the Korean boards Korea — LinkedIn and Indeed are pointed wherever else you'd go, Australia and New Zealand included.</span><span class="ko"><b>일반 보드는 당신이 체크한 국가를 검색합니다.</b> Euraxess가 유럽, jobs.ac.uk가 영국, 한국 보드가 한국을 덮고 — LinkedIn·Indeed는 호주·뉴질랜드를 포함해 당신이 갈 만한 나머지를 향합니다.</span></li>
+          <li><span class="en"><b>Korean boards read in Korean.</b> IBRIC, HiBrain, NRF and university pages, matched with Korean role vocabulary.</span><span class="ko"><b>한국 보드는 한국어로 읽습니다.</b> IBRIC·하이브레인·NRF·대학 공고 페이지를 한국어 직급 어휘로 매칭합니다.</span></li>
+          <li><span class="en"><b>Lab pages you point it at.</b> A watched PI's site is checked for genuine hiring language — a professor's own title never becomes a "posting".</span><span class="ko"><b>지정한 연구실 페이지도 감시합니다.</b> 진짜 채용 문구만 공고로 인정합니다 — 교수 본인의 직함이 "공고"가 되는 일은 없습니다.</span></li>
+          <li><span class="en"><b>The advert is kept as published</b> — headings, tables, lists — not a stripped excerpt.</span><span class="ko"><b>공고문은 게시된 모습 그대로</b> — 제목, 표, 목록까지 — 발췌본이 아니라 원형으로 보존됩니다.</span></li>
+        </ul>
       </div>
       <div class="step-visual">
         <div class="sources">
@@ -329,42 +412,55 @@ footer{border-top:1px solid var(--line);padding:44px 0 56px;color:var(--ink-soft
           <span class="src hot">jobs.ac.uk</span><span class="src">scholarshipdb</span><span class="src">nature careers</span>
           <span class="src">researchgate</span><span class="src">academicpositions</span><span class="src hot">ibric</span>
           <span class="src">hibrain</span><span class="src">nrf</span><span class="src">glassdoor</span>
-          <span class="src hot">lab pages</span><span class="src">university boards</span>
+          <span class="src hot">lab pages</span><span class="src">university boards</span><span class="src">institutes</span>
         </div>
+        <p class="src-note"><span class="en">— each feed reports its health after every sweep</span><span class="ko">— 모든 피드는 매 수집마다 상태를 보고합니다</span></p>
       </div>
     </div>
 
-    <div class="step">
+    <div class="step reveal">
+      <span class="ghost" aria-hidden="true">II</span>
       <div>
-        <p class="step-num">02</p>
-        <h3><span class="en">Score against your CV, not a keyword list</span><span class="ko">가려낸다 — 키워드가 아니라 당신의 CV로</span></h3>
+        <p class="step-num">02 — <span class="en">SCORE</span><span class="ko">선별</span></p>
+        <h3><span class="en">Against your CV, not a keyword list</span><span class="ko">키워드가 아니라 당신의 CV로</span></h3>
         <p>
-          <span class="en">Every advert is scored against your research interests and CV keywords and lands in a band from A to N. Roles are a real facet — postdoc, PhD programme, master's, research staff, faculty — and ticking one changes what gets <i>collected</i>, not just what gets shown. Duplicates across boards are merged, and your stars and notes travel to the surviving copy.</span>
-          <span class="ko">모든 공고는 연구 관심사와 CV 키워드에 대조되어 A–N 밴드를 받습니다. 직급은 진짜 축입니다 — 포스닥·박사과정·석사·연구원·교원을 따로 고르며, 체크하면 보여주는 것만이 아니라 <i>수집하는 것</i>이 달라집니다. 보드끼리 겹치는 공고는 병합되고, 별표와 메모는 살아남는 쪽으로 따라갑니다.</span>
+          <span class="en">Every advert is measured against your research interests and CV keywords and lands in a band from A to N — the same yardstick the watched PIs are measured with, so an A means one thing everywhere.</span>
+          <span class="ko">모든 공고는 연구 관심사와 CV 키워드에 대조되어 A–N 밴드를 받습니다 — 워치리스트의 PI도 같은 잣대로 재기 때문에, A는 어디서나 같은 뜻입니다.</span>
         </p>
+        <ul class="micro">
+          <li><span class="en"><b>Roles are collected, not merely filtered.</b> Postdoc, PhD programme, master's, research staff, faculty — ticking one changes what the boards are asked for.</span><span class="ko"><b>직급은 필터가 아니라 수집 대상입니다.</b> 포스닥·박사과정·석사·연구원·교원 — 체크하면 보드에 묻는 질문 자체가 달라집니다.</span></li>
+          <li><span class="en"><b>Duplicates across boards are merged,</b> and your stars, ordering and notes travel to the surviving copy.</span><span class="ko"><b>보드끼리 겹치는 공고는 병합되고,</b> 별표·순서·메모는 살아남는 쪽으로 따라갑니다.</span></li>
+          <li><span class="en"><b>Subject matters, not just words.</b> An advert that shares your vocabulary but reads clinical when your bench is not gets demoted a band.</span><span class="ko"><b>단어만이 아니라 주제를 봅니다.</b> 어휘는 같은데 실제로는 다른 과학인 공고는 한 밴드 강등됩니다.</span></li>
+        </ul>
       </div>
       <div class="step-visual">
         <div class="viz-list">
           <div class="viz-row"><span class="chip a">A</span><span class="en">Reads like your next lab</span><span class="ko">다음 연구실처럼 읽히는 공고</span></div>
           <div class="viz-row"><span class="chip b">B</span><span class="en">Close field, worth a look</span><span class="ko">인접 분야, 들여다볼 가치</span></div>
-          <div class="viz-row"><span class="chip c">C</span><span class="en">Same words, different science</span><span class="ko">단어만 같고 과학은 다른 공고</span></div>
+          <div class="viz-row"><span class="chip c">C</span><span class="en">Same words, different science</span><span class="ko">단어만 같고 과학은 다른 공고</span><span class="why">demoted</span></div>
           <div class="viz-row"><span class="chip" style="background:var(--band-n)">N</span><s class="en">Not your search at all</s><s class="ko">애초에 당신의 검색이 아님</s></div>
         </div>
       </div>
     </div>
 
-    <div class="step">
+    <div class="step reveal">
+      <span class="ghost" aria-hidden="true">III</span>
       <div>
-        <p class="step-num">03</p>
-        <h3><span class="en">Read the advert before you do</span><span class="ko">판독한다 — 당신보다 먼저 공고문을</span></h3>
+        <p class="step-num">03 — <span class="en">READ</span><span class="ko">판독</span></p>
+        <h3><span class="en">The advert, read before you read it</span><span class="ko">당신보다 먼저 읽는 공고문</span></h3>
         <p>
-          <span class="en">Pay, contract length, visa terms and eligibility are pulled out of the prose. Findings come in three severities: red ends the application (citizenship, clearance, no sponsorship at all), amber can be met but might not be (background checks, foreign-national conditions), and paperwork like badging stays neutral. One click hides everything red.</span>
-          <span class="ko">급여, 계약 기간, 비자 조건, 지원 자격이 공고문 문장에서 추출됩니다. 판정은 세 단계 — 빨강은 지원 자체가 끝나는 조건(시민권, 보안 인가, 스폰서십 전면 거부), 노랑은 충족할 수도 못 할 수도 있는 조건(신원조회, 외국인 제한), 출입증 같은 서류 절차는 중립. 클릭 한 번으로 빨간 공고 전체를 숨깁니다.</span>
+          <span class="en">Pay, contract length, start dates, visa terms and eligibility are pulled out of the prose and pinned to the card. Findings come in three severities — because "you can't apply" and "you might not clear it" are different news.</span>
+          <span class="ko">급여, 계약 기간, 시작일, 비자 조건, 지원 자격이 공고문에서 추출되어 카드에 붙습니다. 판정은 세 단계 — "지원 불가"와 "통과 못 할 수도"는 다른 소식이니까요.</span>
         </p>
+        <ul class="micro">
+          <li><span class="en"><b>Red ends the application:</b> citizenship, security clearance, a blanket refusal of sponsorship. One switch hides them all.</span><span class="ko"><b>빨강은 지원이 끝나는 조건:</b> 시민권, 보안 인가, 스폰서십 전면 거부. 스위치 하나로 전부 숨겨집니다.</span></li>
+          <li><span class="en"><b>Amber can be met, but might bite:</b> background checks, foreign-national conditions, export control.</span><span class="ko"><b>노랑은 충족할 수도, 못 할 수도:</b> 신원조회, 외국인 제한, 수출 통제.</span></li>
+          <li><span class="en"><b>The grading knows immigration law's fine print.</b> "No H-1B sponsorship" is amber, not red — a US postdoc is routinely hired on J-1, so that door stays open.</span><span class="ko"><b>판정은 이민법의 각주까지 압니다.</b> "H-1B 스폰서십 불가"는 빨강이 아니라 노랑 — 미국 포스닥은 통상 J-1으로 채용되므로 그 문은 열려 있습니다.</span></li>
+        </ul>
       </div>
       <div class="step-visual">
-        <p class="viz-quote">"Salary: <mark class="y">$68,000–$74,000</mark>, 2-year appointment. Applicants must hold <mark>U.S. citizenship</mark> at the time of appointment. A <mark class="y">background investigation</mark> is required…"</p>
-        <div class="viz-list" style="margin-top:14px">
+        <p class="viz-quote">"Salary: <mark class="g">$68,000–$74,000</mark>, <mark class="g">2-year appointment</mark>. Applicants must hold <mark>U.S. citizenship</mark> at the time of appointment. A <mark class="y">background investigation</mark> is required…"</p>
+        <div class="viz-list" style="margin-top:16px">
           <div class="viz-row"><span class="sev r"></span><span class="en">Citizenship required — application over</span><span class="ko">시민권 요구 — 지원 불가</span></div>
           <div class="viz-row"><span class="sev y"></span><span class="en">Background check — can be met</span><span class="ko">신원조회 — 충족 가능</span></div>
           <div class="viz-row"><span class="sev g"></span><span class="en">Badging — just paperwork</span><span class="ko">출입증 발급 — 단순 서류</span></div>
@@ -372,48 +468,62 @@ footer{border-top:1px solid var(--line);padding:44px 0 56px;color:var(--ink-soft
       </div>
     </div>
 
-    <div class="step">
+    <div class="step reveal">
+      <span class="ghost" aria-hidden="true">IV</span>
       <div>
-        <p class="step-num">04</p>
-        <h3><span class="en">Track the people, not only the postings</span><span class="ko">추적한다 — 공고만이 아니라 사람을</span></h3>
+        <p class="step-num">04 — <span class="en">TRACK</span><span class="ko">추적</span></p>
+        <h3><span class="en">The people, not only the postings</span><span class="ko">공고만이 아니라 사람을</span></h3>
         <p>
-          <span class="en">A globe places each posting in its city, so a country reads as its labs rather than one column on a centroid. Add a PI to the watchlist and the app follows their papers, patents, topics and lab homepage, scores their fit with the same yardstick as the postings, and draws the co-author network around them.</span>
-          <span class="ko">지구본이 공고를 도시 단위로 놓아, 한 나라가 기둥 하나가 아니라 연구실들의 분포로 읽힙니다. PI를 워치리스트에 올리면 논문·특허·연구 주제·연구실 홈페이지를 따라가고, 공고와 같은 잣대로 적합도를 매기고, 공저자 네트워크를 그려 줍니다.</span>
+          <span class="en">A search is really a map of labs and the people running them. PostGrabbit draws both.</span>
+          <span class="ko">잡서치란 결국 연구실과 그 주인들의 지도입니다. PostGrabbit은 둘 다 그립니다.</span>
         </p>
+        <ul class="micro">
+          <li><span class="en"><b>A globe places each posting in its city</b> — from a bundled gazetteer, with its precision always shown, so a city-level pin is never mistaken for an address.</span><span class="ko"><b>지구본이 공고를 도시 단위로 놓습니다</b> — 내장 지명 사전 기반이고 정밀도가 항상 표시되어, 도시 핀이 주소로 오독되지 않습니다.</span></li>
+          <li><span class="en"><b>A watched PI is followed whole:</b> papers, patents, topics, lab homepage — with a nudge when you said you'd follow up and didn't.</span><span class="ko"><b>워치리스트의 PI는 통째로 추적됩니다:</b> 논문, 특허, 연구 주제, 연구실 홈페이지 — 팔로업하기로 하고 잊으면 알림까지.</span></li>
+          <li><span class="en"><b>The co-author network is drawn around them,</b> and new PIs are suggested by walking citation networks through Semantic Scholar.</span><span class="ko"><b>공저자 네트워크가 주변에 그려지고,</b> Semantic Scholar의 인용 네트워크를 따라 새 PI가 제안됩니다.</span></li>
+        </ul>
       </div>
       <div class="step-visual globe" aria-hidden="true">
-        <svg width="230" height="230" viewBox="0 0 230 230">
-          <circle cx="115" cy="115" r="100" fill="#F0F7F2" stroke="#BFDCCB" stroke-width="1.5"/>
-          <ellipse cx="115" cy="115" rx="100" ry="38" fill="none" stroke="#DCE4DD"/>
-          <ellipse cx="115" cy="115" rx="60" ry="99" fill="none" stroke="#DCE4DD"/>
-          <ellipse cx="115" cy="115" rx="22" ry="100" fill="none" stroke="#DCE4DD"/>
-          <line x1="72" y1="70" x2="72" y2="52" stroke="#147A42" stroke-width="5" stroke-linecap="round"/>
-          <line x1="104" y1="58" x2="104" y2="30" stroke="#147A42" stroke-width="5" stroke-linecap="round"/>
-          <line x1="139" y1="66" x2="139" y2="48" stroke="#2B6CB0" stroke-width="5" stroke-linecap="round"/>
-          <line x1="163" y1="90" x2="163" y2="76" stroke="#B7791F" stroke-width="5" stroke-linecap="round"/>
-          <line x1="88" y1="142" x2="88" y2="126" stroke="#2B6CB0" stroke-width="5" stroke-linecap="round"/>
-          <line x1="150" y1="152" x2="150" y2="132" stroke="#147A42" stroke-width="5" stroke-linecap="round"/>
-          <circle cx="72" cy="70" r="3" fill="#147A42"/><circle cx="104" cy="58" r="3" fill="#147A42"/>
-          <circle cx="139" cy="66" r="3" fill="#2B6CB0"/><circle cx="163" cy="90" r="3" fill="#B7791F"/>
-          <circle cx="88" cy="142" r="3" fill="#2B6CB0"/><circle cx="150" cy="152" r="3" fill="#147A42"/>
+        <svg width="240" height="240" viewBox="0 0 240 240">
+          <circle cx="120" cy="120" r="104" fill="#F0F7F2" stroke="#BFDCCB" stroke-width="1.5"/>
+          <ellipse cx="120" cy="120" rx="104" ry="40" fill="none" stroke="#DFE5DC"/>
+          <ellipse cx="120" cy="120" rx="63" ry="103" fill="none" stroke="#DFE5DC"/>
+          <ellipse cx="120" cy="120" rx="23" ry="104" fill="none" stroke="#DFE5DC"/>
+          <line x1="75" y1="73" x2="75" y2="53" stroke="#147A42" stroke-width="5" stroke-linecap="round"/>
+          <line x1="108" y1="60" x2="108" y2="30" stroke="#147A42" stroke-width="5" stroke-linecap="round"/>
+          <line x1="145" y1="68" x2="145" y2="49" stroke="#2B6CB0" stroke-width="5" stroke-linecap="round"/>
+          <line x1="170" y1="94" x2="170" y2="79" stroke="#B7791F" stroke-width="5" stroke-linecap="round"/>
+          <line x1="92" y1="148" x2="92" y2="131" stroke="#2B6CB0" stroke-width="5" stroke-linecap="round"/>
+          <line x1="156" y1="158" x2="156" y2="137" stroke="#147A42" stroke-width="5" stroke-linecap="round"/>
+          <circle cx="75" cy="73" r="3" fill="#147A42"/><circle cx="108" cy="60" r="3" fill="#147A42"/>
+          <circle cx="145" cy="68" r="3" fill="#2B6CB0"/><circle cx="170" cy="94" r="3" fill="#B7791F"/>
+          <circle cx="92" cy="148" r="3" fill="#2B6CB0"/><circle cx="156" cy="158" r="3" fill="#147A42"/>
+          <text x="120" y="228" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10" fill="#8A948C">precision: city</text>
         </svg>
       </div>
     </div>
 
-    <div class="step">
+    <div class="step reveal">
+      <span class="ghost" aria-hidden="true">V</span>
       <div>
-        <p class="step-num">05</p>
-        <h3><span class="en">Keep everything you decide</span><span class="ko">남긴다 — 판단한 모든 것을</span></h3>
+        <p class="step-num">05 — <span class="en">KEEP</span><span class="ko">기록</span></p>
+        <h3><span class="en">Everything you decide, kept</span><span class="ko">판단한 모든 것을 남기다</span></h3>
         <p>
-          <span class="en">Markdown notes on every posting, an interview-preparation pad that appears once you've applied, a kanban of your applications, drag-to-order lists, one-click Excel export, and cover-letter drafting that uses an AI CLI you already have — with your own key, on your own machine.</span>
-          <span class="ko">공고마다 마크다운 메모, 지원 후에 열리는 면접 준비 패드, 지원 현황 칸반, 드래그로 정하는 내 순서, 원클릭 Excel 내보내기, 그리고 이미 쓰고 있는 AI CLI로 돌리는 커버레터 초안까지 — 당신의 키로, 당신의 컴퓨터에서.</span>
+          <span class="en">Deciding where to apply produces knowledge. The app treats it as a document, not a form field.</span>
+          <span class="ko">어디에 지원할지 판단하는 과정 자체가 지식입니다. 앱은 그것을 입력칸이 아니라 문서로 다룹니다.</span>
         </p>
+        <ul class="micro">
+          <li><span class="en"><b>Markdown notes on every posting</b> — headings, task boxes, tables, pasted screenshots — autosaved on every keystroke, so a reload never eats a sentence.</span><span class="ko"><b>공고마다 마크다운 메모</b> — 제목, 체크박스, 표, 붙여넣은 스크린샷 — 키 입력마다 자동 저장되어, 새로고침이 문장을 삼키지 않습니다.</span></li>
+          <li><span class="en"><b>An interview pad appears once you've applied,</b> with AI-drafted question sets and quick follow-up answers inline — on the model you configure, with your key.</span><span class="ko"><b>지원하면 면접 준비 패드가 열립니다.</b> AI가 예상 질문을 만들고 후속 질문에도 바로 답합니다 — 당신이 고른 모델, 당신의 키로.</span></li>
+          <li><span class="en"><b>Cover letters are drafted by the AI CLI you already use,</b> reading your own doctrine files — and a second draft archives the first, never overwrites it.</span><span class="ko"><b>커버레터는 이미 쓰는 AI CLI가 초안을 잡습니다.</b> 당신의 원칙 문서를 읽어서 — 두 번째 초안은 첫 번째를 보관하지, 덮어쓰지 않습니다.</span></li>
+          <li><span class="en"><b>A kanban and drag-to-order lists</b> keep the applications moving.</span><span class="ko"><b>칸반과 드래그 정렬</b>이 지원 현황을 계속 굴립니다.</span></li>
+        </ul>
       </div>
       <div class="step-visual">
         <div class="kanban" aria-hidden="true">
-          <div class="kan-col"><h5>검토중</h5><div class="kan-card">ETH Zürich — CRISPR</div><div class="kan-card">KAIST — 합성생물학</div></div>
-          <div class="kan-col"><h5>지원함</h5><div class="kan-card">MPI — genome eng.</div></div>
-          <div class="kan-col"><h5>면접</h5><div class="kan-card">UQ — microbiology ★</div></div>
+          <div class="kan-col"><h5><span class="en">reviewing</span><span class="ko">검토중</span></h5><div class="kan-card">ETH Zürich — CRISPR</div><div class="kan-card">KAIST — 합성생물학</div></div>
+          <div class="kan-col"><h5><span class="en">applied</span><span class="ko">지원함</span></h5><div class="kan-card">MPI — genome eng.</div></div>
+          <div class="kan-col"><h5><span class="en">interview</span><span class="ko">면접</span></h5><div class="kan-card star">UQ — microbiology ★</div></div>
         </div>
       </div>
     </div>
@@ -423,72 +533,98 @@ footer{border-top:1px solid var(--line);padding:44px 0 56px;color:var(--ink-soft
 <section class="dark" id="privacy">
   <div class="wrap">
     <p class="eyebrow"><span class="en">Privacy</span><span class="ko">프라이버시</span></p>
-    <h2><span class="en">Your search history is a career decision. It stays home.</span><span class="ko">구직 기록은 커리어의 일부입니다. 집 밖에 나가지 않습니다.</span></h2>
+    <h2><span class="en">Your search history is a career decision.<br>It stays home.</span><span class="ko">구직 기록은 커리어의 일부입니다.<br>집 밖에 나가지 않습니다.</span></h2>
     <div class="priv-grid">
-      <div class="priv-list">
+      <div class="priv-list reveal">
         <div class="priv-item">
           <b><span class="en">No account, no telemetry, no server</span><span class="ko">계정 없음, 텔레메트리 없음, 서버 없음</span></b>
-          <span><span class="en">The app is a local web dashboard served on your own machine. The only network traffic is to the job boards themselves, and to Semantic Scholar, OpenAlex, Crossref and OpenStreetMap when you ask it to look a PI or an institute up.</span><span class="ko">앱은 당신의 컴퓨터에서만 도는 로컬 대시보드입니다. 네트워크 트래픽은 공고 보드 자체와, PI·기관 조회를 요청했을 때의 Semantic Scholar·OpenAlex·Crossref·OpenStreetMap뿐입니다.</span></span>
+          <span><span class="en">The app is a local dashboard served on your own machine by Python's standard library alone. The only network traffic is to the job boards themselves — and to Semantic Scholar, OpenAlex, Crossref and OpenStreetMap when you ask it to look a PI or an institute up.</span><span class="ko">앱은 Python 표준 라이브러리만으로 당신의 컴퓨터에서 서빙되는 로컬 대시보드입니다. 네트워크 트래픽은 공고 보드 자체와, PI·기관 조회를 요청했을 때의 Semantic Scholar·OpenAlex·Crossref·OpenStreetMap뿐입니다.</span></span>
         </div>
         <div class="priv-item">
           <b><span class="en">Optional features bring their own key</span><span class="ko">선택 기능은 각자 키를 가져옵니다</span></b>
-          <span><span class="en">News, patents and cover-letter drafting use services you supply your own key for, and stay off until you do.</span><span class="ko">뉴스·특허·커버레터 기능은 당신이 직접 키를 넣는 서비스로 동작하며, 넣기 전까지는 꺼져 있습니다.</span></span>
+          <span><span class="en">News, patents, interview prep and cover-letter drafting use services you supply your own key for, and stay off until you do. The app never proxies your words through anything of its own.</span><span class="ko">뉴스·특허·면접 준비·커버레터 기능은 당신이 직접 키를 넣는 서비스로 동작하며, 넣기 전까지는 꺼져 있습니다. 앱이 자기 서버로 당신의 글을 중계하는 일은 없습니다.</span></span>
+        </div>
+        <div class="priv-item">
+          <b><span class="en">It will not sign in on your behalf</span><span class="ko">당신 대신 로그인하지 않습니다</span></b>
+          <span><span class="en">Public pages, polite rates, nothing that risks your accounts — which is also why LinkedIn applicant counts aren't scraped.</span><span class="ko">공개 페이지를, 정중한 속도로, 계정을 위험하게 하지 않는 선에서만 — LinkedIn 지원자 수를 긁지 않는 이유이기도 합니다.</span></span>
         </div>
         <div class="priv-item">
           <b><span class="en">Updates never touch your data</span><span class="ko">업데이트는 데이터를 건드리지 않습니다</span></b>
-          <span><span class="en">The application lives in Applications; everything you own lives in Application Support. Replacing one cannot reach the other, and a backup is made before every update download.</span><span class="ko">앱은 Applications에, 당신의 것은 전부 Application Support에 삽니다. 하나를 교체해도 다른 쪽에 닿을 수 없고, 업데이트 다운로드 전엔 자동 백업이 만들어집니다.</span></span>
+          <span><span class="en">The application lives in Applications; everything you own lives in Application Support. Replacing one cannot reach the other, and a backup is taken before every update download anyway.</span><span class="ko">앱은 Applications에, 당신의 것은 전부 Application Support에 삽니다. 하나를 교체해도 다른 쪽에 닿을 수 없고, 어차피 다운로드 전에 백업이 자동으로 만들어집니다.</span></span>
         </div>
       </div>
-      <div class="tree" aria-label="Data location">
+      <div class="tree reveal" aria-label="Data location"><span class="cmt"><span class="en"># everything you own, in one folder</span><span class="ko"># 당신의 모든 것이 이 폴더 하나에</span></span>
 ~/Library/Application Support/<b>PostGrabbit</b>/
 ├── <b>data/</b>      <i><span class="en">postings, notes, watched PIs</span><span class="ko">공고·메모·워치리스트 DB</span></i>
 ├── <b>config/</b>    <i><span class="en">your profile and API keys</span><span class="ko">프로필과 API 키</span></i>
 ├── <b>backups/</b>   <i><span class="en">one-click snapshots</span><span class="ko">원클릭 스냅샷</span></i>
 ├── <b>logs/</b>
-└── <b>outputs/</b>   <i><span class="en">Excel exports</span><span class="ko">Excel 내보내기</span></i>
-      </div>
+└── <b>outputs/</b>   <i><span class="en">Excel exports</span><span class="ko">Excel 내보내기</span></i></div>
     </div>
   </div>
 </section>
 
-<section id="usage">
+<section id="usage" class="alt">
   <div class="wrap">
     <p class="eyebrow"><span class="en">How to use it</span><span class="ko">사용법</span></p>
-    <h2><span class="en">Ten minutes to a running search.</span><span class="ko">10분이면 검색이 돌기 시작합니다.</span></h2>
+    <h2><span class="en">Ten minutes to a <em>running</em> search.</span><span class="ko">10분이면 검색이 <em>돌기 시작</em>합니다.</span></h2>
     <div class="use-grid">
-      <div class="use">
+      <div class="use reveal">
         <h4><span class="en">Install</span><span class="ko">설치</span></h4>
         <p>
           <span class="en">Download the <code>.dmg</code>, drag <b>PostGrabbit</b> into Applications, open it. macOS will refuse the first launch — the build isn't notarised with Apple — so <b>Control-click the app and choose Open</b>, once.</span>
           <span class="ko"><code>.dmg</code>를 받아 <b>PostGrabbit</b>을 Applications에 끌어 넣고 엽니다. Apple 공증이 없는 빌드라 첫 실행은 macOS가 거부합니다 — <b>앱을 Control-클릭 후 열기</b>를 한 번만 해 주세요.</span>
         </p>
       </div>
-      <div class="use">
+      <div class="use reveal">
         <h4><span class="en">Tell it who you are</span><span class="ko">당신이 누구인지 알려주기</span> <span class="req">required</span></h4>
         <p>
-          <span class="en">The setup checklist collects two things before anything runs: your <b>research field</b> (search terms are built from it, and postings are scored against it) and your <b>CV keywords</b>. Then tick the <b>roles</b> (postdoc is the default) and <b>countries</b> you want searched — an unticked role is never searched for.</span>
-          <span class="ko">설정 체크리스트는 수집을 시작하기 전에 두 가지를 요구합니다: <b>연구 분야</b>(검색어가 여기서 만들어지고, 점수도 여기에 대조됩니다)와 <b>CV 키워드</b>. 이어서 찾을 <b>직급</b>(기본은 포스닥)과 <b>국가</b>를 체크하세요 — 체크하지 않은 직급은 아예 검색되지 않습니다.</span>
+          <span class="en">The setup checklist collects two things before anything runs: your <b>research field</b> — search terms are built from it, and postings are scored against it — and your <b>CV keywords</b>. Then tick the <b>roles</b> (postdoc is the default) and <b>countries</b> you want searched. An unticked role is never searched for; every optional item says which feature it turns on.</span>
+          <span class="ko">설정 체크리스트는 수집 전에 두 가지를 요구합니다: <b>연구 분야</b> — 검색어가 여기서 만들어지고 점수도 여기에 대조됩니다 — 그리고 <b>CV 키워드</b>. 이어서 찾을 <b>직급</b>(기본은 포스닥)과 <b>국가</b>를 체크하세요. 체크하지 않은 직급은 아예 검색되지 않고, 선택 항목마다 어떤 기능이 켜지는지 적혀 있습니다.</span>
         </p>
       </div>
-      <div class="use">
+      <div class="use reveal">
         <h4><span class="en">Let it collect</span><span class="ko">수집은 앱에게</span></h4>
         <p>
-          <span class="en">A scheduler runs the whole pipeline on the interval you set, and a status panel shows each source's last run — including which ones came back empty or broken, so a dead feed never fails silently. You can also press collect-now any time.</span>
-          <span class="ko">스케줄러가 정한 주기로 전체 파이프라인을 돌리고, 상태 패널이 소스별 최근 실행을 보여 줍니다 — 비어 돌아온 소스, 죽은 소스까지 표시되어 조용히 실패하는 피드가 없습니다. 물론 지금 수집 버튼도 언제든 누를 수 있습니다.</span>
+          <span class="en">A scheduler runs the whole pipeline on your interval, and a status panel shows each source's last run — including which feeds came back empty or broken, so a dead source never fails silently. Collect-now is one press away whenever you're impatient.</span>
+          <span class="ko">스케줄러가 정한 주기로 전체 파이프라인을 돌리고, 상태 패널이 소스별 최근 실행을 보여 줍니다 — 비어 돌아온 피드, 죽은 피드까지 표시되어 조용한 실패가 없습니다. 급하면 지금 수집 버튼 한 번이면 됩니다.</span>
         </p>
       </div>
-      <div class="use">
+      <div class="use reveal">
         <h4><span class="en">Triage, star, apply</span><span class="ko">거르고, 별표하고, 지원하기</span></h4>
         <p>
-          <span class="en">Work the list top-down: filter by band, role, region or source; hide postings with red eligibility findings; star what's promising, note what you learn, and move applications across the kanban. Settings has a one-click <b>Data backup</b> card when you want a snapshot.</span>
-          <span class="ko">리스트를 위에서부터: 밴드·직급·지역·소스로 거르고, 빨간 자격 제한은 숨기고, 괜찮은 공고에 별표, 알게 된 것은 메모, 지원한 건 칸반으로. 스냅샷이 필요하면 설정의 원클릭 <b>데이터 백업</b> 카드가 있습니다.</span>
+          <span class="en">Work the list top-down: filter by band, role, region or source; hide postings with red eligibility findings; star what's promising, write what you learn into the note, and move applications across the board. Settings holds a one-click <b>Data backup</b> card when the week mattered.</span>
+          <span class="ko">리스트를 위에서부터: 밴드·직급·지역·소스로 거르고, 빨간 자격 제한은 숨기고, 괜찮은 공고에 별표, 알게 된 것은 메모에, 지원한 건 보드로. 중요한 한 주였다면 설정의 원클릭 <b>데이터 백업</b> 카드가 있습니다.</span>
         </p>
       </div>
+    </div>
+    <div class="kbd-row reveal">
+      <span><span class="en">While reading a posting:</span><span class="ko">공고를 읽는 중에는:</span></span>
+      <span><kbd>s</kbd> <span class="en">star</span><span class="ko">별표</span></span>
+      <span><kbd>a</kbd> <span class="en">mark applied</span><span class="ko">지원 표시</span></span>
+      <span><kbd>o</kbd> <span class="en">open the original advert</span><span class="ko">원문 공고 열기</span></span>
     </div>
   </div>
 </section>
 
-<section id="architecture">
+<section id="more">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">And the rest</span><span class="ko">그리고 나머지</span></p>
+    <h2><span class="en">The details that add up.</span><span class="ko">쌓여서 차이를 만드는 디테일.</span></h2>
+    <div class="etc-grid reveal">
+      <div class="etc"><span class="glyph">a</span><b><span class="en">Excel, when asked</span><span class="ko">요청하면 Excel로</span></b><p><span class="en">A full workbook with charts and per-region sheets, exported on demand or with each run.</span><span class="ko">차트와 지역별 시트를 갖춘 워크북을 원할 때, 또는 매 실행마다 내보냅니다.</span></p></div>
+      <div class="etc"><span class="glyph">b</span><b><span class="en">Email reports</span><span class="ko">이메일 리포트</span></b><p><span class="en">A digest of what arrived, mailed on the schedule you set — with the workbook attached.</span><span class="ko">무엇이 새로 왔는지 정한 주기로 메일로 — 워크북을 첨부해서.</span></p></div>
+      <div class="etc"><span class="glyph">c</span><b><span class="en">Source health</span><span class="ko">소스 상태 진단</span></b><p><span class="en">Feeds whose recent runs all came back empty are named, not buried under "success, 0".</span><span class="ko">최근 실행이 전부 빈손인 피드는 "성공, 0건" 밑에 묻히지 않고 이름이 불립니다.</span></p></div>
+      <div class="etc"><span class="glyph">d</span><b><span class="en">On your phone, if you say so</span><span class="ko">허락하면 폰에서도</span></b><p><span class="en">Off by default; opt in and the dashboard is reachable over your own Tailscale network, encrypted, never the open Wi-Fi.</span><span class="ko">기본은 꺼짐. 켜면 당신의 Tailscale 네트워크로만 — 암호화된 채로, 공용 Wi-Fi에는 절대 열리지 않습니다.</span></p></div>
+      <div class="etc"><span class="glyph">e</span><b><span class="en">Honest maps</span><span class="ko">정직한 지도</span></b><p><span class="en">Institute pins come from OpenAlex + OpenStreetMap and always state their precision — a city pin is never dressed up as an address.</span><span class="ko">기관 핀은 OpenAlex와 OpenStreetMap에서 오고 정밀도를 항상 밝힙니다 — 도시 핀이 주소 행세를 하지 않습니다.</span></p></div>
+      <div class="etc"><span class="glyph">f</span><b><span class="en">A knowledge graph</span><span class="ko">지식 그래프</span></b><p><span class="en">PIs, papers, patents, postings and lab pages drawn as one network, with its own legend.</span><span class="ko">PI, 논문, 특허, 공고, 연구실 페이지를 하나의 네트워크로 — 전용 범례와 함께.</span></p></div>
+      <div class="etc"><span class="glyph">g</span><b><span class="en">Updates that respect you</span><span class="ko">선을 지키는 업데이트</span></b><p><span class="en">The app checks releases, downloads, backs up, and hands you the disk image — installing stays your action.</span><span class="ko">앱은 확인·다운로드·백업까지만 하고 디스크 이미지를 건넵니다 — 설치는 당신의 행동으로 남습니다.</span></p></div>
+      <div class="etc"><span class="glyph">h</span><b><span class="en">Two languages, one app</span><span class="ko">두 언어, 하나의 앱</span></b><p><span class="en">Korean and English throughout, following your system language, switchable any time.</span><span class="ko">한국어와 영어가 앱 전체에 — 시스템 언어를 따르고 언제든 바꿀 수 있습니다.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section id="architecture" style="padding-top:0">
   <div class="wrap">
     <p class="eyebrow"><span class="en">Under the hood</span><span class="ko">구성</span></p>
     <h2><span class="en">One pipeline, one database, one page.</span><span class="ko">파이프라인 하나, 데이터베이스 하나, 페이지 하나.</span></h2>
@@ -496,7 +632,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 56px;color:var(--ink-soft
       <span class="en">PostGrabbit is a Python pipeline and a dashboard around a single SQLite file. The dashboard is served by the standard library alone — nothing to install, nothing listening beyond your machine.</span>
       <span class="ko">PostGrabbit은 SQLite 파일 하나를 둘러싼 Python 파이프라인과 대시보드입니다. 대시보드는 표준 라이브러리만으로 서빙됩니다 — 설치할 것도, 컴퓨터 밖에서 듣고 있는 것도 없습니다.</span>
     </p>
-    <div class="arch">
+    <div class="arch reveal">
       <div class="flow">
         <div class="node">
           <b><span class="en">Sources</span><span class="ko">소스</span></b>
@@ -520,15 +656,15 @@ footer{border-top:1px solid var(--line);padding:44px 0 56px;color:var(--ink-soft
         <div class="arrow">→</div>
         <div class="node">
           <b><span class="en">Dashboard</span><span class="ko">대시보드</span></b>
-          <span><code>reporting/</code><br><span class="en">list · globe · PIs · kanban</span><span class="ko">리스트 · 지구본 · PI · 칸반</span></span>
+          <span><code>reporting/</code><br><span class="en">list · globe · PIs · board</span><span class="ko">리스트 · 지구본 · PI · 보드</span></span>
         </div>
       </div>
       <p class="arch-note">
-        <b>+</b>
-        <span><span class="en"><b>Discovery</b> (<code>discovery/</code>) walks co-author and citation networks through Semantic Scholar to suggest PIs you haven't met yet, and the scheduler (<code>collector</code>) runs the whole thing on your interval.</span><span class="ko"><b>디스커버리</b>(<code>discovery/</code>)는 Semantic Scholar의 공저자·인용 네트워크를 따라 아직 모르는 PI를 제안하고, 스케줄러(<code>collector</code>)가 이 전체를 정한 주기로 돌립니다.</span></span>
+        <span class="plus">＋</span>
+        <span><span class="en"><b>Discovery</b> (<code>discovery/</code>) walks co-author and citation networks through Semantic Scholar to suggest PIs you haven't met yet, and the scheduler (<code>collector</code>) runs the whole thing on your interval — reporting each source's health as it goes.</span><span class="ko"><b>디스커버리</b>(<code>discovery/</code>)는 Semantic Scholar의 공저자·인용 네트워크를 따라 아직 모르는 PI를 제안하고, 스케줄러(<code>collector</code>)가 이 전체를 정한 주기로 돌리며 소스별 상태를 함께 보고합니다.</span></span>
       </p>
     </div>
-    <div class="mods">
+    <div class="mods reveal">
       <div class="mod"><code>scrapers/</code><p><span class="en">One module per source; each keeps the advert's real markup, not a stripped excerpt.</span><span class="ko">소스마다 모듈 하나. 발췌본이 아니라 공고 원문의 구조를 그대로 보존합니다.</span></p></div>
       <div class="mod"><code>discovery/</code><p><span class="en">PI discovery through co-author and citation networks.</span><span class="ko">공저자·인용 네트워크를 통한 PI 발굴.</span></p></div>
       <div class="mod"><code>matching/</code><p><span class="en">CV-based scoring, role facets, deduplication, PI name extraction.</span><span class="ko">CV 기반 스코어링, 직급 축, 중복 병합, PI 이름 추출.</span></p></div>
@@ -537,24 +673,26 @@ footer{border-top:1px solid var(--line);padding:44px 0 56px;color:var(--ink-soft
   </div>
 </section>
 
-<section id="download">
+<section id="download" style="padding-top:0">
   <div class="wrap">
-    <div class="dl">
-      <p class="eyebrow"><span class="en">Download</span><span class="ko">다운로드</span></p>
-      <h2><span class="en">Start the search tonight.</span><span class="ko">오늘 밤부터 돌려 두세요.</span></h2>
-      <p class="section-lede" style="margin:14px auto 0;max-width:34em">
-        <span class="en">By tomorrow morning it will have read a few hundred adverts for you.</span>
-        <span class="ko">내일 아침이면 몇백 개의 공고문을 대신 읽어 놓았을 겁니다.</span>
-      </p>
-      <div class="cta-row" style="margin-top:30px">
-        <a class="btn btn-primary" href="https://github.com/JAEYOONSUNG/PostGrabbit/releases/latest">
-          <span class="en">Download the latest release</span><span class="ko">최신 릴리스 다운로드</span>
-        </a>
-      </div>
-      <p class="cta-note" style="margin-top:10px"><span class="en">macOS · Apple silicon · free</span><span class="ko">macOS · Apple silicon · 무료</span></p>
-      <div class="gatekeeper">
-        <span class="en"><b>First launch:</b> macOS will say the app is from an unidentified developer. Control-click <b>PostGrabbit.app</b> → <b>Open</b> → confirm. Once is enough.</span>
-        <span class="ko"><b>첫 실행:</b> macOS가 확인되지 않은 개발자라며 거부합니다. <b>PostGrabbit.app</b>을 Control-클릭 → <b>열기</b> → 확인. 한 번이면 됩니다.</span>
+    <div class="dl-outer reveal">
+      <div class="dl">
+        <p class="eyebrow"><span class="en">Download</span><span class="ko">다운로드</span></p>
+        <h2><span class="en">Start the search <em>tonight.</em></span><span class="ko"><em>오늘 밤부터</em> 돌려 두세요.</span></h2>
+        <p class="section-lede" style="margin:16px auto 0;max-width:34em">
+          <span class="en">By tomorrow morning it will have read a few hundred adverts for you.</span>
+          <span class="ko">내일 아침이면 몇백 개의 공고문을 대신 읽어 놓았을 겁니다.</span>
+        </p>
+        <div class="cta-row" style="margin-top:32px">
+          <a class="btn btn-primary" href="https://github.com/JAEYOONSUNG/PostGrabbit/releases/latest">
+            <span class="en">Download the latest release</span><span class="ko">최신 릴리스 다운로드</span>
+          </a>
+        </div>
+        <p class="cta-note" id="dl-note">macOS · Apple silicon · <span class="en">free</span><span class="ko">무료</span></p>
+        <div class="gatekeeper">
+          <span class="en"><b>First launch:</b> macOS will say the app is from an unidentified developer. Control-click <b>PostGrabbit.app</b> → <b>Open</b> → confirm. Once is enough.</span>
+          <span class="ko"><b>첫 실행:</b> macOS가 확인되지 않은 개발자라며 거부합니다. <b>PostGrabbit.app</b>을 Control-클릭 → <b>열기</b> → 확인. 한 번이면 됩니다.</span>
+        </div>
       </div>
     </div>
   </div>
@@ -575,15 +713,22 @@ footer{border-top:1px solid var(--line);padding:44px 0 56px;color:var(--ink-soft
       <details>
         <summary><span class="en">macOS says the app can't be opened.</span><span class="ko">macOS가 앱을 열 수 없다고 합니다.</span></summary>
         <div>
-          <span class="en">The build is signed but not notarised with Apple, so the first launch is blocked by Gatekeeper. Control-click the app in Applications, choose Open, and confirm — you only do this once. Updates installed the same way ask the same once.</span>
+          <span class="en">The build is signed but not notarised with Apple, so the first launch is blocked by Gatekeeper. Control-click the app in Applications, choose Open, and confirm — you only do this once.</span>
           <span class="ko">서명은 되어 있지만 Apple 공증이 없어 첫 실행을 Gatekeeper가 막습니다. Applications에서 앱을 Control-클릭해 열기를 누르고 확인하세요 — 한 번이면 됩니다.</span>
         </div>
       </details>
       <details>
         <summary><span class="en">Where does my data live, and what happens on update?</span><span class="ko">데이터는 어디에 저장되고, 업데이트하면 어떻게 되나요?</span></summary>
         <div>
-          <span class="en">Everything is in <code style="font-family:var(--mono);font-size:13px">~/Library/Application Support/PostGrabbit/</code> — the database, your profile, keys, backups and exports. Updating replaces only the app in Applications; it cannot touch that folder, and a backup is taken before every update download anyway.</span>
-          <span class="ko">전부 <code style="font-family:var(--mono);font-size:13px">~/Library/Application Support/PostGrabbit/</code>에 있습니다 — 데이터베이스, 프로필, 키, 백업, 내보내기까지. 업데이트는 Applications의 앱만 교체하며 그 폴더에는 닿을 수 없고, 어차피 다운로드 전에 백업이 자동으로 만들어집니다.</span>
+          <span class="en">Everything is in <code>~/Library/Application Support/PostGrabbit/</code> — the database, your profile, keys, backups and exports. Updating replaces only the app in Applications; it cannot touch that folder, and a backup is taken before every update download anyway.</span>
+          <span class="ko">전부 <code>~/Library/Application Support/PostGrabbit/</code>에 있습니다 — 데이터베이스, 프로필, 키, 백업, 내보내기까지. 업데이트는 Applications의 앱만 교체하며 그 폴더에는 닿을 수 없고, 어차피 다운로드 전에 백업이 자동으로 만들어집니다.</span>
+        </div>
+      </details>
+      <details>
+        <summary><span class="en">Can I read it from my phone?</span><span class="ko">폰에서도 볼 수 있나요?</span></summary>
+        <div>
+          <span class="en">Yes, deliberately opt-in: turn it on in Settings and the dashboard becomes reachable over your own Tailscale network — encrypted, with an access key, and never exposed to the open Wi-Fi. It stays loopback-only until you decide otherwise.</span>
+          <span class="ko">네, 단 명시적으로 켜야 합니다: 설정에서 켜면 당신의 Tailscale 네트워크를 통해서만 — 암호화되고 접근 키가 있으며, 공용 Wi-Fi에는 절대 노출되지 않습니다. 켜기 전까지는 이 컴퓨터 전용입니다.</span>
         </div>
       </details>
       <details>
@@ -614,35 +759,79 @@ footer{border-top:1px solid var(--line);padding:44px 0 56px;color:var(--ink-soft
 
 <footer>
   <div class="wrap">
-    <div class="foot">
-      <a class="brand" href="#"><img src="assets/logo.png" alt="" style="width:22px;height:22px"> PostGrabbit</a>
-      <a href="https://github.com/JAEYOONSUNG/PostGrabbit/releases"><span class="en">Releases</span><span class="ko">릴리스</span></a>
-      <a href="https://github.com/JAEYOONSUNG/PostGrabbit/issues"><span class="en">Report a problem</span><span class="ko">문제 신고</span></a>
-      <a href="https://github.com/JAEYOONSUNG/PostGrabbit/blob/main/THIRD_PARTY_NOTICES.md"><span class="en">Third-party notices</span><span class="ko">서드파티 고지</span></a>
-      <a href="https://github.com/JAEYOONSUNG/PostGrabbit">GitHub</a>
+    <div class="foot-grid">
+      <div class="foot-about">
+        <a class="brand" href="#"><img src="assets/logo.png" alt="" style="width:22px;height:22px"> PostGrabbit</a>
+        <p>
+          <span class="en">A desktop app that finds academic job postings, keeps them in one place, and helps you decide which are worth an application — entirely on your own machine.</span>
+          <span class="ko">학계 공고를 찾아 한 곳에 모으고, 어디에 지원할 가치가 있는지 판단을 돕는 데스크톱 앱 — 전부 당신의 컴퓨터 안에서.</span>
+        </p>
+      </div>
+      <div>
+        <h6><span class="en">Project</span><span class="ko">프로젝트</span></h6>
+        <ul>
+          <li><a href="https://github.com/JAEYOONSUNG/PostGrabbit/releases"><span class="en">Releases</span><span class="ko">릴리스</span></a></li>
+          <li><a href="https://github.com/JAEYOONSUNG/PostGrabbit">GitHub</a></li>
+          <li><a href="https://github.com/JAEYOONSUNG/PostGrabbit/issues"><span class="en">Report a problem</span><span class="ko">문제 신고</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <h6><span class="en">Notices</span><span class="ko">고지</span></h6>
+        <ul>
+          <li><a href="https://github.com/JAEYOONSUNG/PostGrabbit/blob/main/THIRD_PARTY_NOTICES.md"><span class="en">Third-party notices</span><span class="ko">서드파티 고지</span></a></li>
+          <li><a href="https://www.geonames.org/">GeoNames (CC BY 4.0)</a></li>
+        </ul>
+      </div>
     </div>
-    <p class="legal">
-      <span class="en">Job postings belong to the sites that publish them. PostGrabbit reads public pages at a polite rate; it does not sign in to anything on your behalf and does not redistribute what it collects. City data from GeoNames (CC BY 4.0).</span>
-      <span class="ko">공고의 저작권은 이를 게시한 사이트에 있습니다. PostGrabbit은 공개 페이지를 정중한 속도로 읽을 뿐, 당신 대신 로그인하지 않으며 수집한 것을 재배포하지 않습니다. 도시 데이터는 GeoNames(CC BY 4.0)를 사용합니다.</span>
-    </p>
+    <div class="colophon">
+      <span><span class="en">Job postings belong to the sites that publish them. PostGrabbit reads public pages at a polite rate and redistributes nothing.</span><span class="ko">공고의 저작권은 게시한 사이트에 있습니다. PostGrabbit은 공개 페이지를 정중한 속도로 읽고, 무엇도 재배포하지 않습니다.</span></span>
+      <span>Set in Newsreader &amp; IBM Plex</span>
+    </div>
   </div>
 </footer>
 
 <script>
 function setLang(l){
   document.documentElement.lang=l;
-  document.getElementById('lang-en').setAttribute('aria-pressed',l==='en');
-  document.getElementById('lang-ko').setAttribute('aria-pressed',l==='ko');
+  document.getElementById('lang-en').setAttribute('aria-pressed',String(l==='en'));
+  document.getElementById('lang-ko').setAttribute('aria-pressed',String(l==='ko'));
   try{localStorage.setItem('pg-lang',l)}catch(e){}
   document.title=l==='ko'
     ?'PostGrabbit — 당신의 컴퓨터에서 돌아가는 학계 잡서치'
     :'PostGrabbit — the academic job search, on your own machine';
 }
 (function(){
+  /* English is the default; only an explicit choice switches. */
   var saved=null;
   try{saved=localStorage.getItem('pg-lang')}catch(e){}
-  if(saved==='ko'||saved==='en'){setLang(saved);return}
-  if((navigator.language||'').toLowerCase().indexOf('ko')===0)setLang('ko');
+  if(saved==='ko')setLang('ko');
+
+  /* header shadow on scroll */
+  var hd=document.getElementById('hd');
+  addEventListener('scroll',function(){hd.classList.toggle('scrolled',scrollY>8)},{passive:true});
+
+  /* scroll reveal */
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+    },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+  }else{
+    document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in')});
+  }
+
+  /* latest release tag, quietly */
+  fetch('https://api.github.com/repos/JAEYOONSUNG/PostGrabbit/releases/latest')
+    .then(function(r){return r.ok?r.json():null})
+    .then(function(j){
+      if(!j||!j.tag_name)return;
+      var d=j.published_at?new Date(j.published_at):null;
+      var when=d?d.toLocaleDateString(document.documentElement.lang==='ko'?'ko-KR':'en-US',{year:'numeric',month:'short',day:'numeric'}):'';
+      ['release-note','dl-note'].forEach(function(id){
+        var el=document.getElementById(id);
+        if(el)el.innerHTML='<b>'+j.tag_name+'</b>'+(when?' · '+when:'')+' · macOS · Apple silicon';
+      });
+    }).catch(function(){});
 })();
 </script>
 </body>
