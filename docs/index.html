@@ -360,6 +360,14 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
 [data-theme="dark"] .n-edge{stroke:#2C3140}
 [data-theme="dark"] .n-node{fill:#6C7280}
 
+/* ————— real screenshots ————— */
+.shot-stack{display:flex;flex-direction:column;gap:60px;margin-top:48px}
+.shot-fig{margin:0}
+.shot{background:var(--paper-raise);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 30px 70px -34px rgba(16,20,26,.4)}
+.shot img{display:block;width:100%;height:auto}
+.shot-cap{display:block;margin-top:14px;font-size:14.5px;color:var(--ink-soft);max-width:56em;line-height:1.6}
+.shot-cap b{color:var(--ink);font-weight:600}
+
 /* ————— PI intelligence ————— */
 .pi-panel{margin-top:48px;background:var(--paper-raise);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 24px 60px -32px rgba(16,20,26,.35);overflow:hidden}
 .pi-body{display:grid;grid-template-columns:1fr 1.08fr}
@@ -933,6 +941,51 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
           <div class="kan-card kan-ghost">UQ — microbiology<span class="kg-star">★</span></div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="shots" class="alt">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">Straight from the app</span><span class="ko">실제 화면</span></p>
+    <h2><span class="en">These are <em>real pixels.</em></span><span class="ko">목업이 아니라 <em>실제 픽셀</em>입니다.</span></h2>
+    <p class="section-lede">
+      <span class="en">Captured from the shipping dashboard, staged with demo data — every posting and PI in these frames is fictional, but the product is exactly what installs.</span>
+      <span class="ko">배포판 대시보드를 데모 데이터로 스테이징해 그대로 캡처했습니다 — 프레임 속 공고와 PI는 전부 가상이지만, 제품은 설치되는 그 모습 그대로입니다.</span>
+    </p>
+    <div class="shot-stack">
+      <figure class="shot-fig reveal">
+        <div class="shot">
+          <div class="mock-bar">
+            <span class="dot" style="background:#F26D5F"></span>
+            <span class="dot" style="background:#F2BE4C"></span>
+            <span class="dot" style="background:#5CC461"></span>
+            <span class="mock-title">PostGrabbit · <span class="en">demo data</span><span class="ko">데모 데이터</span></span>
+          </div>
+          <img class="en" src="assets/shots/list-en.webp" alt="The posting list with fit bands, deadlines and the fit &amp; decision summary" loading="lazy" width="1600" height="1000">
+          <img class="ko" src="assets/shots/list-ko.webp" alt="적합도 밴드·마감·판독 요약이 있는 공고 리스트" loading="lazy" width="1600" height="1000">
+        </div>
+        <figcaption class="shot-cap">
+          <span class="en"><b>The working list.</b> Bands on the rail, deadlines as D-days, statuses on the card — and on the right, the advert already read: topic fit 86%, applicant fit 90%, and a "check first: background check" flag pulled from the prose.</span>
+          <span class="ko"><b>일하는 리스트.</b> 레일의 밴드, D-데이 마감, 카드 위의 상태 — 오른쪽엔 이미 판독된 공고: 주제 적합 86%, 지원자 적합 90%, 그리고 본문에서 뽑아낸 "먼저 확인: 신원조사" 플래그까지.</span>
+        </figcaption>
+      </figure>
+      <figure class="shot-fig reveal">
+        <div class="shot">
+          <div class="mock-bar">
+            <span class="dot" style="background:#F26D5F"></span>
+            <span class="dot" style="background:#F2BE4C"></span>
+            <span class="dot" style="background:#5CC461"></span>
+            <span class="mock-title">PostGrabbit · <span class="en">research radar — demo data</span><span class="ko">리서치 레이더 — 데모 데이터</span></span>
+          </div>
+          <img class="en" src="assets/shots/pi-en.webp" alt="The watched-PI radar with fit, tier and new-posting flags" loading="lazy" width="1600" height="1000">
+          <img class="ko" src="assets/shots/pi-ko.webp" alt="적합도·티어·신규 공고 표시가 있는 관심 PI 레이더" loading="lazy" width="1600" height="1000">
+        </div>
+        <figcaption class="shot-cap">
+          <span class="en"><b>Research radar.</b> Watched PIs with fit, institution tier and fresh-posting flags — each opens into watch sources, patents, contact history, matched postings and notes.</span>
+          <span class="ko"><b>리서치 레이더.</b> 적합도·기관 티어·신규 공고 표시가 붙은 관심 PI — 각각 감시 소스, 특허, 연락 이력, 매칭된 공고와 메모로 이어집니다.</span>
+        </figcaption>
+      </figure>
     </div>
   </div>
 </section>
