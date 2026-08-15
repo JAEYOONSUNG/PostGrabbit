@@ -15,7 +15,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://jaeyoonsung.github.io/PostGrabbit/assets/og.png">
 <link rel="canonical" href="https://jaeyoonsung.github.io/PostGrabbit/">
-<meta name="theme-color" content="#F9FAF6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0D1611" media="(prefers-color-scheme: dark)">
 <script>
 (function(){try{
@@ -28,21 +28,23 @@
 <link rel="apple-touch-icon" href="assets/logo.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&family=Noto+Serif+KR:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --pine:#147A42;
   --pine-deep:#0C5530;
   --pine-wash:#EDF4EE;
-  --ink:#12241A;
-  --ink-soft:#4A5C50;
-  --paper:#F9FAF6;
+  --ink:#16211B;
+  --ink-soft:#54625B;
+  --paper:#FFFFFF;
   --paper-raise:#FFFFFF;
-  --paper-alt:#F2F5EF;
-  --line:#DFE5DC;
-  --line-soft:#E9EDE6;
-  --brass:#9C7C3C;
-  --brass-soft:#C4A96A;
+  --paper-alt:#F6F8F7;
+  --line:#E4E8E5;
+  --line-soft:#EDF0EE;
+  --brass:#147A42;
+  --brass-soft:#BCDCC9;
   --band-a:#147A42;
   --band-b:#2B6CB0;
   --band-c:#B7791F;
@@ -55,15 +57,13 @@
   --dark-soft:#9CB2A2;
   --dark-line:#1E3A29;
   --radius:14px;
-  --sans:"IBM Plex Sans","IBM Plex Sans KR",-apple-system,"Apple SD Gothic Neo",sans-serif;
-  --serif:"Newsreader","Noto Serif KR",Georgia,serif;
+  --sans:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Segoe UI",sans-serif;
+  --serif:var(--sans);
   --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16.5px;line-height:1.68;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.028;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
 main,header,footer{position:relative;z-index:1}
 ::selection{background:#C4E2CF}
 a{color:var(--pine-deep)}
@@ -97,12 +97,12 @@ header.scrolled{box-shadow:0 10px 30px -18px rgba(18,36,26,.25);border-bottom-co
 /* ————— shared type ————— */
 .eyebrow{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);font-weight:500}
 .eyebrow::before{content:"";width:26px;height:1px;background:var(--brass-soft)}
-h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,5.6vw,62px);line-height:1.08;letter-spacing:-.022em;font-optical-sizing:auto}
-h1 em{font-style:normal;color:var(--pine);letter-spacing:-.01em}
-html[lang="ko"] h1{font-weight:600;font-size:clamp(33px,4.8vw,50px);line-height:1.24;letter-spacing:-.01em}
-h2{font-family:var(--serif);font-weight:500;font-size:clamp(29px,3.8vw,40px);line-height:1.16;margin-top:14px;letter-spacing:-.015em}
+h1{font-family:var(--sans);font-weight:800;font-size:clamp(37px,5vw,58px);line-height:1.1;letter-spacing:-.03em}
+h1 em{font-style:normal;color:var(--pine);letter-spacing:-.025em}
+html[lang="ko"] h1{font-size:clamp(32px,4.4vw,48px);line-height:1.22;letter-spacing:-.02em}
+h2{font-family:var(--sans);font-weight:750;font-size:clamp(27px,3.4vw,37px);line-height:1.18;margin-top:14px;letter-spacing:-.024em}
 h2 em{font-style:normal;color:var(--pine)}
-html[lang="ko"] h2{font-weight:600;line-height:1.3}
+html[lang="ko"] h2{line-height:1.32;letter-spacing:-.015em}
 .section-lede{margin-top:16px;color:var(--ink-soft);max-width:40em;font-size:17px}
 
 /* reveal */
@@ -127,11 +127,11 @@ html[lang="ko"] h2{font-weight:600;line-height:1.3}
 /* annotated app miniature */
 .mock-frame{position:relative;padding:0 0 34px}
 .mock{background:var(--paper-raise);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 1px 0 rgba(255,255,255,.8) inset,0 30px 70px -32px rgba(18,43,29,.4),0 8px 20px -12px rgba(18,43,29,.18);overflow:hidden;font-size:12.5px}
-.mock-bar{display:flex;align-items:center;gap:7px;padding:11px 14px;border-bottom:1px solid var(--line-soft);background:linear-gradient(180deg,#F6F8F4,#F0F4EE)}
+.mock-bar{display:flex;align-items:center;gap:7px;padding:11px 14px;border-bottom:1px solid var(--line-soft);background:linear-gradient(180deg,#F8FAF9,#F2F5F3)}
 .dot{width:11px;height:11px;border-radius:50%}
 .mock-title{margin-left:8px;color:var(--ink-soft);font-family:var(--mono);font-size:11px;letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
 .mock-body{display:grid;grid-template-columns:120px 1fr}
-.mock-rail{border-right:1px solid var(--line-soft);padding:12px 0;background:#FAFBF8}
+.mock-rail{border-right:1px solid var(--line-soft);padding:12px 0;background:#FAFBFA}
 .rail-item{display:flex;justify-content:space-between;padding:5px 12px;color:var(--ink-soft);font-size:10.5px}
 .rail-item.on{color:var(--pine-deep);font-weight:600;background:var(--pine-wash);box-shadow:-2px 0 0 var(--pine) inset}
 .rail-item b{font-family:var(--mono);font-weight:500}
@@ -163,7 +163,7 @@ html[lang="ko"] h2{font-weight:600;line-height:1.3}
 .stats{margin:64px 0 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr)}
 .stat{padding:26px 10px;text-align:center;border-left:1px solid var(--line)}
 .stat:first-child{border-left:0}
-.stat b{display:block;font-family:var(--serif);font-size:32px;font-weight:500;letter-spacing:-.01em;color:var(--pine-deep)}
+.stat b{display:block;font-family:var(--sans);font-size:30px;font-weight:800;letter-spacing:-.02em;color:var(--pine-deep)}
 .stat span{display:block;margin-top:4px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
 @media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}.stat:nth-child(3){border-left:0}.stat:nth-child(n+3){border-top:1px solid var(--line)}}
 
@@ -173,12 +173,12 @@ section{padding:100px 0;scroll-margin-top:64px}
 .step:first-of-type{border-top:0;padding-top:52px}
 .step:nth-child(even) .step-visual{order:-1}
 @media(max-width:880px){.step{grid-template-columns:1fr;gap:30px}.step:nth-child(even) .step-visual{order:0}}
-.ghost{position:absolute;top:34px;right:-8px;font-family:var(--serif);font-size:120px;line-height:1;color:var(--brass);opacity:.09;pointer-events:none;font-weight:400;letter-spacing:.04em}
+.ghost{position:absolute;top:34px;right:-8px;font-family:var(--mono);font-size:88px;line-height:1;color:var(--brass);opacity:.08;pointer-events:none;font-weight:500;letter-spacing:.06em}
 .step:nth-child(even) .ghost{right:auto;left:-8px}
 @media(max-width:880px){.ghost{font-size:84px;top:20px}}
 .step-num{font-family:var(--mono);font-size:12px;color:var(--brass);font-weight:500;letter-spacing:.18em}
-h3{font-family:var(--serif);font-weight:500;font-size:28px;margin-top:8px;line-height:1.22;letter-spacing:-.012em}
-html[lang="ko"] h3{font-weight:600;font-size:24px}
+h3{font-family:var(--sans);font-weight:700;font-size:24px;margin-top:8px;line-height:1.28;letter-spacing:-.018em}
+html[lang="ko"] h3{font-size:22px;letter-spacing:-.01em}
 .step>div>p{margin-top:14px;color:var(--ink-soft);font-size:15.5px}
 .micro{margin-top:18px;list-style:none;display:flex;flex-direction:column;gap:9px}
 .micro li{position:relative;padding-left:22px;font-size:14.5px;color:var(--ink-soft)}
@@ -201,14 +201,14 @@ html[lang="ko"] h3{font-weight:600;font-size:24px}
 .src.hot{border-color:#BFDCCB;color:var(--pine-deep);background:var(--pine-wash)}
 .src-note{margin-top:14px;font-family:var(--mono);font-size:10.5px;color:var(--band-n);letter-spacing:.03em}
 .kanban{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.kan-col{border:1px solid var(--line-soft);border-radius:8px;padding:8px;background:#FAFBF8}
+.kan-col{border:1px solid var(--line-soft);border-radius:8px;padding:8px;background:#FAFBFA}
 .kan-col h5{font-size:10px;font-family:var(--mono);color:var(--ink-soft);font-weight:500;margin-bottom:6px;text-transform:uppercase;letter-spacing:.08em}
 .kan-card{background:var(--paper-raise);border:1px solid var(--line-soft);border-radius:6px;padding:5px 7px;font-size:10.5px;margin-bottom:5px;line-height:1.4;box-shadow:0 1px 2px rgba(18,43,29,.05)}
 .kan-card.star{border-color:#E7D3AE}
 
 /* ————— dark privacy band ————— */
 .dark{background:radial-gradient(120% 140% at 50% -20%,var(--dark-bg-2),var(--dark-bg));color:var(--dark-ink);border-top:1px solid var(--dark-line);border-bottom:1px solid var(--dark-line);position:relative}
-.dark::after{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(196,169,106,.5),transparent)}
+.dark::after{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(53,196,137,.4),transparent)}
 .dark .eyebrow{color:var(--brass-soft)}
 .dark .eyebrow::before{background:var(--brass)}
 .dark h2{color:#fff}
@@ -241,7 +241,7 @@ html[lang="ko"] h3{font-weight:600;font-size:24px}
 
 /* ————— everything else (dark toolbox) ————— */
 .toolbox{background:radial-gradient(120% 140% at 50% -20%,var(--dark-bg-2),var(--dark-bg));color:var(--dark-ink);border-top:1px solid var(--dark-line);border-bottom:1px solid var(--dark-line);position:relative}
-.toolbox::after{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(196,169,106,.5),transparent)}
+.toolbox::after{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(53,196,137,.4),transparent)}
 .toolbox .eyebrow{color:var(--brass-soft)}
 .toolbox .eyebrow::before{background:var(--brass)}
 .toolbox h2{color:#fff}
@@ -327,8 +327,8 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
   --paper-alt:#0F1A13;
   --line:#26382C;
   --line-soft:#1D2C22;
-  --brass:#C4A96A;
-  --brass-soft:#8A7440;
+  --brass:#6FCF97;
+  --brass-soft:#2F4F3C;
   --band-n:#6B7A70;
 }
 [data-theme="dark"] ::selection{background:#1E5C3B}
@@ -623,7 +623,7 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
     </p>
 
     <div class="step reveal">
-      <span class="ghost" aria-hidden="true">I</span>
+      <span class="ghost" aria-hidden="true">01</span>
       <div>
         <p class="step-num">01 — <span class="en">COLLECT</span><span class="ko">수집</span></p>
         <h3><span class="en">From everywhere, at once, on schedule</span><span class="ko">모든 곳에서, 한 번에, 정해진 주기로</span></h3>
@@ -651,7 +651,7 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
     </div>
 
     <div class="step reveal">
-      <span class="ghost" aria-hidden="true">II</span>
+      <span class="ghost" aria-hidden="true">02</span>
       <div>
         <p class="step-num">02 — <span class="en">SCORE</span><span class="ko">선별</span></p>
         <h3><span class="en">Against your CV, not a keyword list</span><span class="ko">키워드가 아니라 당신의 CV로</span></h3>
@@ -676,7 +676,7 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
     </div>
 
     <div class="step reveal">
-      <span class="ghost" aria-hidden="true">III</span>
+      <span class="ghost" aria-hidden="true">03</span>
       <div>
         <p class="step-num">03 — <span class="en">READ</span><span class="ko">판독</span></p>
         <h3><span class="en">The advert, read before you read it</span><span class="ko">당신보다 먼저 읽는 공고문</span></h3>
@@ -701,7 +701,7 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
     </div>
 
     <div class="step reveal">
-      <span class="ghost" aria-hidden="true">IV</span>
+      <span class="ghost" aria-hidden="true">04</span>
       <div>
         <p class="step-num">04 — <span class="en">TRACK</span><span class="ko">추적</span></p>
         <h3><span class="en">The people, not only the postings</span><span class="ko">공고만이 아니라 사람을</span></h3>
@@ -733,7 +733,7 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
     </div>
 
     <div class="step reveal">
-      <span class="ghost" aria-hidden="true">V</span>
+      <span class="ghost" aria-hidden="true">05</span>
       <div>
         <p class="step-num">05 — <span class="en">KEEP</span><span class="ko">기록</span></p>
         <h3><span class="en">Everything you decide, kept</span><span class="ko">판단한 모든 것을 남기다</span></h3>
@@ -1089,7 +1089,7 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
     </div>
     <div class="colophon">
       <span><span class="en">Job postings belong to the sites that publish them. PostGrabbit reads public pages at a polite rate and redistributes nothing.</span><span class="ko">공고의 저작권은 게시한 사이트에 있습니다. PostGrabbit은 공개 페이지를 정중한 속도로 읽고, 무엇도 재배포하지 않습니다.</span></span>
-      <span>Set in Newsreader &amp; IBM Plex</span>
+      <span>Set in Pretendard &amp; IBM Plex</span>
     </div>
   </div>
 </footer>
