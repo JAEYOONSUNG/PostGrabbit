@@ -325,6 +325,65 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
 .rel-name{color:var(--ink);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .rel-date{margin-left:auto;font-family:var(--mono);font-size:11.5px;color:var(--band-n);flex:none}
 
+/* ————— atlas visual ————— */
+.demo-atlas{padding:20px 20px 16px}
+.atlas{display:block;width:100%;height:auto}
+.gs0{stop-color:#FFFFFF}.gs1{stop-color:#F0F3F1}
+.gsh{stop-color:#10141A}.gsh1{stop-opacity:.055}
+.g-dot{fill:#C6CEC9}
+.g-grat{fill:none;stroke:#E1E6E3;stroke-width:1}
+.g-rim{fill:none;stroke:#DDE2DF;stroke-width:1.2}
+.g-ground{fill:#EBEEEC}
+.g-psh{fill:rgba(16,20,26,.12)}
+.alab rect{fill:var(--paper-raise);stroke:var(--line);stroke-width:1}
+.alab text{font-family:var(--mono);font-size:9px;fill:var(--ink-soft)}
+.alab line{stroke:var(--line);stroke-width:1}
+.atlas-cap{margin:6px 2px 14px;font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--band-n);text-align:center}
+.net{display:block;width:100%;height:auto;border-top:1px dashed var(--line-soft);padding-top:10px}
+.n-edge{stroke:#D8DDDA;stroke-width:1.2}
+.n-node{fill:#9AA39D}
+.n-hub{fill:var(--pine)}
+.n-ring{fill:none;stroke:var(--pine);stroke-width:1.2;opacity:.5}
+.n-sug{fill:none;stroke:var(--pine);stroke-width:1.6}
+.n-lbl{font-family:var(--mono);font-size:8.5px;fill:var(--band-n);letter-spacing:.04em}
+.n-lbl-sug{fill:var(--pine-deep)}
+[data-theme="dark"] .gs0{stop-color:#1D2130}
+[data-theme="dark"] .gs1{stop-color:#131622}
+[data-theme="dark"] .gsh1{stop-opacity:.3}
+[data-theme="dark"] .g-dot{fill:#3B4152}
+[data-theme="dark"] .g-grat{stroke:#242938}
+[data-theme="dark"] .g-rim{stroke:#2B3040}
+[data-theme="dark"] .g-ground{fill:#0B0D14}
+[data-theme="dark"] .g-psh{fill:rgba(0,0,0,.4)}
+[data-theme="dark"] .n-edge{stroke:#2C3140}
+[data-theme="dark"] .n-node{fill:#6C7280}
+
+/* ————— phone viewer ————— */
+.pocket-grid{display:grid;grid-template-columns:1fr .8fr;gap:56px;align-items:center;margin-top:24px}
+@media(max-width:880px){.pocket-grid{grid-template-columns:1fr;gap:40px}}
+.phone-wrap{display:flex;justify-content:center}
+.phone{width:252px;border-radius:40px;border:1px solid var(--line);background:var(--paper-raise);box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 30px 70px -30px rgba(16,20,26,.4);padding:10px;position:relative}
+.p-screen{border-radius:31px;overflow:hidden;border:1px solid var(--line-soft);background:var(--paper);position:relative}
+.p-island{width:72px;height:18px;border-radius:11px;background:#10131A;margin:8px auto 2px}
+.p-bar{display:flex;align-items:center;justify-content:space-between;padding:7px 13px 5px;font-family:var(--mono);font-size:8.5px;color:var(--band-n)}
+.p-off{display:inline-flex;align-items:center;gap:4px;border:1px solid var(--line);border-radius:99px;padding:1px 7px;color:var(--ink-soft)}
+.p-off i{width:5px;height:5px;border-radius:50%;background:var(--band-c)}
+.p-list{padding:6px 9px 12px;display:flex;flex-direction:column;gap:7px}
+.p-card{border:1px solid var(--line-soft);border-radius:10px;padding:8px 10px;background:var(--paper-raise);position:relative}
+.p-top{display:flex;align-items:center;gap:6px}
+.p-title{font-weight:600;font-size:10.5px;line-height:1.35}
+.p-sub{margin-top:2px;color:var(--ink-soft);font-size:9px}
+.p-star{position:absolute;top:6px;right:8px;color:#C9A13B;font-size:11px;opacity:0}
+.p-toast{position:absolute;left:50%;bottom:12px;transform:translate(-50%,8px);background:var(--ink);color:var(--paper);font-size:9px;font-family:var(--mono);border-radius:99px;padding:5px 11px;white-space:nowrap;opacity:0}
+.p-tabs{display:flex;justify-content:space-around;border-top:1px solid var(--line-soft);padding:7px 0 9px;font-family:var(--mono);font-size:8px;color:var(--band-n)}
+.p-tabs b{color:var(--pine-deep);font-weight:500}
+@media(prefers-reduced-motion:no-preference){
+  .p-star{animation:ppStar 10s infinite}
+  .p-toast{animation:ppToast 10s infinite}
+  @keyframes ppStar{0%,24%{opacity:0;transform:scale(.3)}28%{opacity:1;transform:scale(1.35)}31%,92%{opacity:1;transform:scale(1)}97%,100%{opacity:0}}
+  @keyframes ppToast{0%,30%{opacity:0;transform:translate(-50%,8px)}35%,62%{opacity:1;transform:translate(-50%,0)}68%,100%{opacity:0;transform:translate(-50%,8px)}}
+}
+
 /* ————— comparison ————— */
 .cmp-scroll{margin-top:44px;overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--paper-raise)}
 .cmp{width:100%;border-collapse:collapse;min-width:780px;font-size:14px}
@@ -372,9 +431,6 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
 [data-theme="dark"] .pg-cursor{background:rgba(233,240,234,.14);border-color:rgba(233,240,234,.5);box-shadow:0 2px 6px rgba(0,0,0,.4)}
 [data-theme="dark"] .mk-toggle i{background:#303648}
 [data-theme="dark"] .node.core{box-shadow:0 0 0 3px rgba(53,196,137,.12)}
-[data-theme="dark"] .globe .sph{fill:#141726;stroke:#2B3049}
-[data-theme="dark"] .globe .grat{stroke:#232838}
-[data-theme="dark"] .globe text{fill:#6C7280}
 [data-theme="dark"] .dot{opacity:.85}
 [data-theme="dark"] .brand img,[data-theme="dark"] .foot-about img{box-shadow:0 2px 10px -2px rgba(0,0,0,.6)}
 @media(prefers-reduced-motion:no-preference){
@@ -688,6 +744,7 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
           <li><span class="en"><b>Roles are collected, not merely filtered.</b> Postdoc, PhD programme, master's, research staff, faculty — ticking one changes what the boards are asked for.</span><span class="ko"><b>직급은 필터가 아니라 수집 대상입니다.</b> 포스닥·박사과정·석사·연구원·교원 — 체크하면 보드에 묻는 질문 자체가 달라집니다.</span></li>
           <li><span class="en"><b>Duplicates across boards are merged,</b> and your stars, ordering and notes travel to the surviving copy.</span><span class="ko"><b>보드끼리 겹치는 공고는 병합되고,</b> 별표·순서·메모는 살아남는 쪽으로 따라갑니다.</span></li>
           <li><span class="en"><b>Subject matters, not just words.</b> An advert that shares your vocabulary but reads clinical when your bench is not gets demoted a band.</span><span class="ko"><b>단어만이 아니라 주제를 봅니다.</b> 어휘는 같은데 실제로는 다른 과학인 공고는 한 밴드 강등됩니다.</span></li>
+          <li><span class="en"><b>Measured, not vibes.</b> Every scoring change is checked against a gold set of adverts rated blind by two readers — recall is guarded as hard as precision.</span><span class="ko"><b>감이 아니라 측정입니다.</b> 스코어링 변경은 두 명이 블라인드로 평가한 골드셋에 매번 대조되고, 정밀도만큼 재현율도 지킵니다.</span></li>
         </ul>
       </div>
       <div class="step-visual">
@@ -740,19 +797,60 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
           <li><span class="en"><b>The co-author network is drawn around them,</b> and new PIs are suggested by walking citation networks through Semantic Scholar.</span><span class="ko"><b>공저자 네트워크가 주변에 그려지고,</b> Semantic Scholar의 인용 네트워크를 따라 새 PI가 제안됩니다.</span></li>
         </ul>
       </div>
-      <div class="step-visual globe" aria-hidden="true">
-        <svg width="240" height="240" viewBox="0 0 240 240">
-          <circle class="sph" cx="120" cy="120" r="104" fill="#F0F7F2" stroke="#BFDCCB" stroke-width="1.5"/>
-          <ellipse class="grat" cx="120" cy="120" rx="104" ry="40" fill="none" stroke="#DFE5DC"/>
-          <ellipse class="grat" cx="120" cy="120" rx="63" ry="103" fill="none" stroke="#DFE5DC"/>
-          <ellipse class="grat" cx="120" cy="120" rx="23" ry="104" fill="none" stroke="#DFE5DC"/>
-          <g class="pin"><line x1="75" y1="73" x2="75" y2="53" stroke="#147A42" stroke-width="5" stroke-linecap="round"/><circle cx="75" cy="73" r="3" fill="#147A42"/><circle class="rip" cx="75" cy="73" r="7" fill="none" stroke="#147A42" stroke-width="1.5"/></g>
-          <g class="pin"><line x1="108" y1="60" x2="108" y2="30" stroke="#147A42" stroke-width="5" stroke-linecap="round"/><circle cx="108" cy="60" r="3" fill="#147A42"/><circle class="rip" cx="108" cy="60" r="7" fill="none" stroke="#147A42" stroke-width="1.5"/></g>
-          <g class="pin"><line x1="145" y1="68" x2="145" y2="49" stroke="#2B6CB0" stroke-width="5" stroke-linecap="round"/><circle cx="145" cy="68" r="3" fill="#2B6CB0"/><circle class="rip" cx="145" cy="68" r="7" fill="none" stroke="#2B6CB0" stroke-width="1.5"/></g>
-          <g class="pin"><line x1="170" y1="94" x2="170" y2="79" stroke="#B7791F" stroke-width="5" stroke-linecap="round"/><circle cx="170" cy="94" r="3" fill="#B7791F"/><circle class="rip" cx="170" cy="94" r="7" fill="none" stroke="#B7791F" stroke-width="1.5"/></g>
-          <g class="pin"><line x1="92" y1="148" x2="92" y2="131" stroke="#2B6CB0" stroke-width="5" stroke-linecap="round"/><circle cx="92" cy="148" r="3" fill="#2B6CB0"/><circle class="rip" cx="92" cy="148" r="7" fill="none" stroke="#2B6CB0" stroke-width="1.5"/></g>
-          <g class="pin"><line x1="156" y1="158" x2="156" y2="137" stroke="#147A42" stroke-width="5" stroke-linecap="round"/><circle cx="156" cy="158" r="3" fill="#147A42"/><circle class="rip" cx="156" cy="158" r="7" fill="none" stroke="#147A42" stroke-width="1.5"/></g>
-          <text x="120" y="228" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10" fill="#8A948C">precision: city</text>
+      <div class="step-visual globe demo-atlas" aria-hidden="true">
+        <svg class="atlas" viewBox="0 0 320 226">
+          <defs>
+            <radialGradient id="gSph" cx="36%" cy="28%" r="80%">
+              <stop offset="0%" class="gs0"/><stop offset="100%" class="gs1"/>
+            </radialGradient>
+            <linearGradient id="gShade" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="52%" stop-opacity="0" class="gsh"/><stop offset="100%" class="gsh gsh1"/>
+            </linearGradient>
+            <pattern id="gDot" width="11" height="11" patternUnits="userSpaceOnUse">
+              <circle cx="2" cy="2" r="1.15" class="g-dot"/>
+            </pattern>
+            <clipPath id="gClip"><circle cx="150" cy="106" r="88"/></clipPath>
+          </defs>
+          <ellipse class="g-ground" cx="150" cy="204" rx="82" ry="9"/>
+          <circle cx="150" cy="106" r="88" fill="url(#gSph)"/>
+          <g clip-path="url(#gClip)">
+            <rect x="62" y="18" width="176" height="176" fill="url(#gDot)"/>
+            <ellipse class="g-grat" cx="150" cy="106" rx="88" ry="32"/>
+            <ellipse class="g-grat" cx="150" cy="72" rx="80" ry="22"/>
+            <ellipse class="g-grat" cx="150" cy="140" rx="80" ry="22"/>
+            <ellipse class="g-grat" cx="150" cy="106" rx="52" ry="87"/>
+            <ellipse class="g-grat" cx="150" cy="106" rx="19" ry="88"/>
+            <rect x="62" y="18" width="176" height="176" fill="url(#gShade)"/>
+          </g>
+          <circle class="g-rim" cx="150" cy="106" r="88"/>
+          <g class="pin"><ellipse class="g-psh" cx="116" cy="66" rx="6" ry="2"/><line x1="116" y1="66" x2="116" y2="40" stroke="#147A42" stroke-width="6" stroke-linecap="round"/><circle cx="116" cy="66" r="3" fill="#147A42"/><circle class="rip" cx="116" cy="66" r="7" fill="none" stroke="#147A42" stroke-width="1.5"/></g>
+          <g class="pin"><ellipse class="g-psh" cx="152" cy="52" rx="6" ry="2"/><line x1="152" y1="52" x2="152" y2="22" stroke="#147A42" stroke-width="6" stroke-linecap="round"/><circle cx="152" cy="52" r="3" fill="#147A42"/><circle class="rip" cx="152" cy="52" r="7" fill="none" stroke="#147A42" stroke-width="1.5"/></g>
+          <g class="pin"><ellipse class="g-psh" cx="188" cy="70" rx="6" ry="2"/><line x1="188" y1="70" x2="188" y2="48" stroke="#2B6CB0" stroke-width="6" stroke-linecap="round"/><circle cx="188" cy="70" r="3" fill="#2B6CB0"/><circle class="rip" cx="188" cy="70" r="7" fill="none" stroke="#2B6CB0" stroke-width="1.5"/></g>
+          <g class="pin"><ellipse class="g-psh" cx="208" cy="104" rx="6" ry="2"/><line x1="208" y1="104" x2="208" y2="88" stroke="#B7791F" stroke-width="6" stroke-linecap="round"/><circle cx="208" cy="104" r="3" fill="#B7791F"/><circle class="rip" cx="208" cy="104" r="7" fill="none" stroke="#B7791F" stroke-width="1.5"/></g>
+          <g class="pin"><ellipse class="g-psh" cx="118" cy="144" rx="6" ry="2"/><line x1="118" y1="144" x2="118" y2="126" stroke="#2B6CB0" stroke-width="6" stroke-linecap="round"/><circle cx="118" cy="144" r="3" fill="#2B6CB0"/><circle class="rip" cx="118" cy="144" r="7" fill="none" stroke="#2B6CB0" stroke-width="1.5"/></g>
+          <g class="pin"><ellipse class="g-psh" cx="172" cy="152" rx="6" ry="2"/><line x1="172" y1="152" x2="172" y2="130" stroke="#147A42" stroke-width="6" stroke-linecap="round"/><circle cx="172" cy="152" r="3" fill="#147A42"/><circle class="rip" cx="172" cy="152" r="7" fill="none" stroke="#147A42" stroke-width="1.5"/></g>
+          <g class="alab"><rect x="163" y="10" width="66" height="17" rx="5"/><text x="196" y="21.5" text-anchor="middle">Zürich · 12</text><line x1="163" y1="19" x2="156" y2="21"/></g>
+          <g class="alab"><rect x="199" y="42" width="66" height="17" rx="5"/><text x="232" y="53.5" text-anchor="middle">Boston · 9</text><line x1="199" y1="50" x2="192" y2="49"/></g>
+          <g class="alab"><rect x="183" y="158" width="58" height="17" rx="5"/><text x="212" y="169.5" text-anchor="middle">Seoul · 7</text><line x1="183" y1="164" x2="176" y2="154"/></g>
+        </svg>
+        <p class="atlas-cap">columns = postings per city · precision: city</p>
+        <svg class="net" viewBox="0 0 320 78">
+          <line class="n-edge e1" x1="86" y1="40" x2="150" y2="18"/>
+          <line class="n-edge e2" x1="86" y1="40" x2="158" y2="52"/>
+          <line class="n-edge e3" x1="86" y1="40" x2="128" y2="64"/>
+          <line class="n-edge e4" x1="150" y1="18" x2="222" y2="26"/>
+          <line class="n-edge e5" x1="158" y1="52" x2="236" y2="58"/>
+          <line class="n-edge e6" x1="222" y1="26" x2="278" y2="44"/>
+          <circle class="n-hub" cx="86" cy="40" r="7"/>
+          <circle class="n-ring" cx="86" cy="40" r="12"/>
+          <circle class="n-node" cx="150" cy="18" r="4"/>
+          <circle class="n-node" cx="158" cy="52" r="4"/>
+          <circle class="n-node" cx="128" cy="64" r="4"/>
+          <circle class="n-node" cx="222" cy="26" r="4"/>
+          <circle class="n-node" cx="236" cy="58" r="4"/>
+          <circle class="n-node n-sug" cx="278" cy="44" r="5"/>
+          <text class="n-lbl" x="86" y="62" text-anchor="middle">watched PI</text>
+          <text class="n-lbl n-lbl-sug" x="278" y="66" text-anchor="middle">suggested</text>
         </svg>
       </div>
     </div>
@@ -815,6 +913,57 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
 ├── <b>backups/</b>   <i><span class="en">one-click snapshots</span><span class="ko">원클릭 스냅샷</span></i>
 ├── <b>logs/</b>
 └── <b>outputs/</b>   <i><span class="en">Excel exports</span><span class="ko">Excel 내보내기</span></i></div>
+    </div>
+  </div>
+</section>
+
+<section id="pocket">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">On your phone</span><span class="ko">휴대폰에서</span></p>
+    <h2><span class="en">It follows you <em>out the door.</em></span><span class="ko">문 밖을 나서도 <em>따라옵니다.</em></span></h2>
+    <div class="pocket-grid">
+      <div>
+        <p class="section-lede" style="margin-top:0">
+          <span class="en">Pair your phone once and your whole search rides along — postings, the map, watched PIs. The Mac uploads a snapshot whenever something changes, so the page stays up <b>even while the Mac sleeps</b>.</span>
+          <span class="ko">한 번만 페어링하면 잡서치 전체가 주머니로 들어옵니다 — 공고, 지도, 관심 PI까지. 무언가 바뀔 때마다 Mac이 스냅샷을 올려 두므로, <b>Mac이 잠들어 있어도</b> 페이지는 계속 열립니다.</span>
+        </p>
+        <ul class="micro" style="margin-top:22px">
+          <li><span class="en"><b>Pair with a six-digit email code.</b> No password, no links to click; the session holds for 30 days.</span><span class="ko"><b>이메일 6자리 코드로 페어링.</b> 비밀번호도, 눌러야 할 링크도 없습니다. 세션은 30일 유지됩니다.</span></li>
+          <li><span class="en"><b>Edits travel back home.</b> A star, a status, a note made on the bus is queued and applied on the Mac — each change carries its base revision, so nothing silently overwrites.</span><span class="ko"><b>편집은 집으로 돌아갑니다.</b> 버스에서 누른 별표·상태·메모가 대기열에 쌓였다가 Mac에 반영됩니다 — 변경마다 기준 리비전이 붙어 아무것도 조용히 덮어쓰지 않습니다.</span></li>
+          <li><span class="en"><b>Installs as an app, reads offline.</b> Add to Home Screen and what you've opened stays readable without signal, read-only.</span><span class="ko"><b>앱으로 설치되고, 오프라인에서도 읽힙니다.</b> 홈 화면에 추가하면 이미 열어 본 내용은 신호가 없어도 읽기 전용으로 남습니다.</span></li>
+          <li><span class="en"><b>Watched PIs come whole:</b> metrics, recent papers, news, and the co-author graph — expandable a page at a time.</span><span class="ko"><b>관심 PI도 통째로:</b> 연구지표, 최근 논문, 뉴스, 공저자 그래프까지 — 한 페이지씩 펼쳐 볼 수 있습니다.</span></li>
+          <li><span class="en"><b>Your CV and API keys never leave the Mac.</b> The snapshot carries your postings and notes; the private things stay home.</span><span class="ko"><b>CV와 API 키는 Mac을 떠나지 않습니다.</b> 스냅샷에 실리는 건 공고와 메모까지 — 사적인 것들은 집에 남습니다.</span></li>
+        </ul>
+      </div>
+      <div class="phone-wrap reveal">
+        <div class="phone" aria-hidden="true">
+          <div class="p-screen">
+            <div class="p-island"></div>
+            <div class="p-bar"><span>postgrabbit</span><span class="p-off"><i></i>synced 09:41</span></div>
+            <div class="p-list">
+              <div class="p-card">
+                <span class="p-star">★</span>
+                <div class="p-top"><span class="chip a">A</span><span class="p-title">Postdoc — CRISPR genome engineering</span></div>
+                <div class="p-sub">ETH Zürich · Zürich · D-21</div>
+              </div>
+              <div class="p-card">
+                <div class="p-top"><span class="chip a">A</span><span class="p-title">Postdoc — RNA delivery &amp; editing</span></div>
+                <div class="p-sub">MIT · Cambridge, MA</div>
+              </div>
+              <div class="p-card">
+                <div class="p-top"><span class="chip b">B</span><span class="p-title">Research Fellow — microbiology</span></div>
+                <div class="p-sub">UQ · Brisbane · background check</div>
+              </div>
+              <div class="p-card">
+                <div class="p-top"><span class="chip b">B</span><span class="p-title">Group Leader — synthetic biology</span></div>
+                <div class="p-sub">MPI · Marburg · 5y</div>
+              </div>
+            </div>
+            <div class="p-toast">✓ 별표 1건 → Mac으로 동기화</div>
+            <div class="p-tabs"><b>공고</b><span>지도</span><span>PI</span><span>보관함</span></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -925,8 +1074,8 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
       </div>
       <div class="etc">
         <span class="ico"><svg viewBox="0 0 20 20"><rect x="6" y="2.5" width="8" height="15" rx="2"/><path d="M9 14.5h2"/></svg></span>
-        <b><span class="en">On your phone, if you say so</span><span class="ko">허락하면 폰에서도</span></b>
-        <p><span class="en">Off by default; opt in and the dashboard rides your own Tailscale network — encrypted, keyed, never the open Wi-Fi.</span><span class="ko">기본은 꺼짐. 켜면 당신의 Tailscale 네트워크로만 — 암호화되고 키가 걸린 채, 공용 Wi-Fi에는 절대 열리지 않습니다.</span></p>
+        <b><span class="en">A phone viewer that syncs back</span><span class="ko">되돌아오는 폰 뷰어</span></b>
+        <p><span class="en">Postings, map and PIs on your phone even while the Mac sleeps; stars and notes made there queue and apply back home, conflict-safe.</span><span class="ko">Mac이 잠들어도 폰에서 공고·지도·PI를 보고, 폰에서 한 별표·메모는 대기열로 Mac에 충돌 없이 반영됩니다.</span></p>
       </div>
       <div class="etc">
         <span class="ico"><svg viewBox="0 0 20 20"><path d="M10 17.5s-6-5.2-6-9.3a6 6 0 1 1 12 0c0 4.1-6 9.3-6 9.3Z"/><circle cx="10" cy="8" r="2.2"/></svg></span>
@@ -1105,10 +1254,10 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
         </div>
       </details>
       <details>
-        <summary><span class="en">Can I read it from my phone?</span><span class="ko">폰에서도 볼 수 있나요?</span></summary>
+        <summary><span class="en">Can I use it from my phone?</span><span class="ko">폰에서도 쓸 수 있나요?</span></summary>
         <div>
-          <span class="en">Yes, deliberately opt-in: turn it on in Settings and the dashboard becomes reachable over your own Tailscale network — encrypted, with an access key, and never exposed to the open Wi-Fi. It stays loopback-only until you decide otherwise.</span>
-          <span class="ko">네, 단 명시적으로 켜야 합니다: 설정에서 켜면 당신의 Tailscale 네트워크를 통해서만 — 암호화되고 접근 키가 있으며, 공용 Wi-Fi에는 절대 노출되지 않습니다. 켜기 전까지는 이 컴퓨터 전용입니다.</span>
+          <span class="en">Yes, two ways, both opt-in. The phone viewer pairs with a six-digit email code, shows your postings, map and watched PIs even while the Mac sleeps, works offline for what you've opened, and syncs stars, statuses and notes back to the Mac conflict-safely — your CV and API keys are never uploaded. Alternatively, the full dashboard can be served over your own Tailscale network, encrypted, never the open Wi-Fi.</span>
+          <span class="ko">네, 두 가지 방법 모두 선택 사항입니다. 폰 뷰어는 이메일 6자리 코드로 페어링해 Mac이 잠들어 있어도 공고·지도·관심 PI를 보여 주고, 열어 본 내용은 오프라인에서도 읽히며, 폰에서 한 별표·상태·메모는 충돌 없이 Mac으로 되돌아갑니다 — CV와 API 키는 업로드되지 않습니다. 또는 전체 대시보드를 본인 Tailscale 네트워크로만 열 수도 있습니다(암호화, 공용 Wi-Fi 비노출).</span>
         </div>
       </details>
       <details>
