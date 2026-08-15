@@ -14,6 +14,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://jaeyoonsung.github.io/PostGrabbit/assets/og.png">
+<link rel="canonical" href="https://jaeyoonsung.github.io/PostGrabbit/">
+<meta name="theme-color" content="#F9FAF6">
 <link rel="icon" href="assets/logo.png?v=2">
 <link rel="apple-touch-icon" href="assets/logo.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -76,6 +78,9 @@ header.scrolled{box-shadow:0 10px 30px -18px rgba(18,36,26,.25);border-bottom-co
 .lang{display:flex;border:1px solid var(--line);border-radius:99px;overflow:hidden;font-size:12px;background:var(--paper-raise)}
 .lang button{border:0;background:none;padding:5px 12px;cursor:pointer;font-family:var(--mono);color:var(--ink-soft);letter-spacing:.04em;white-space:nowrap}
 .lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.nav-cta{background:linear-gradient(180deg,#178A4B,var(--pine));color:#fff;text-decoration:none;font-size:13.5px;font-weight:600;padding:8px 16px;border-radius:9px;box-shadow:0 1px 0 rgba(255,255,255,.25) inset,0 4px 12px -5px rgba(20,122,66,.5);transition:transform .15s ease}
+.nav-cta:hover{transform:translateY(-1px)}
+@media(max-width:560px){.nav-cta{display:none}}
 .gh{display:inline-flex;align-items:center;gap:6px;color:var(--ink-soft);text-decoration:none;font-size:14px}
 .gh:hover{color:var(--pine-deep)}
 .gh svg{width:18px;height:18px;fill:currentColor}
@@ -155,7 +160,7 @@ html[lang="ko"] h2{font-weight:600;line-height:1.3}
 @media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}.stat:nth-child(3){border-left:0}.stat:nth-child(n+3){border-top:1px solid var(--line)}}
 
 /* ————— sections ————— */
-section{padding:100px 0}
+section{padding:100px 0;scroll-margin-top:64px}
 .step{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;padding:64px 0;border-top:1px solid var(--line);position:relative}
 .step:first-of-type{border-top:0;padding-top:52px}
 .step:nth-child(even) .step-visual{order:-1}
@@ -414,6 +419,27 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
   @keyframes pgKgStar{0%,42%{opacity:0;transform:scale(.3)}46%{opacity:1;transform:scale(1.4)}50%,88%{opacity:1;transform:scale(1)}95%,100%{opacity:0}}
 }
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication",
+ "name":"PostGrabbit",
+ "operatingSystem":"macOS",
+ "applicationCategory":"BusinessApplication",
+ "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+ "description":"A desktop app for the academic job search: collects postdoc, PhD and faculty postings from fifteen sources, scores them against your CV, reads visa terms out of the advert, and tracks the PIs behind them — entirely on your own machine.",
+ "url":"https://jaeyoonsung.github.io/PostGrabbit/",
+ "downloadUrl":"https://github.com/JAEYOONSUNG/PostGrabbit/releases/latest",
+ "image":"https://jaeyoonsung.github.io/PostGrabbit/assets/og.png"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+ {"@type":"Question","name":"Does anything about my search leave my computer?","acceptedAnswer":{"@type":"Answer","text":"No. There is no account and no server. The app requests pages from the job boards, and queries Semantic Scholar, OpenAlex, Crossref and OpenStreetMap when you explicitly look up a PI or an institute. Optional AI features call the provider you configured with your own key."}},
+ {"@type":"Question","name":"macOS says the app can't be opened.","acceptedAnswer":{"@type":"Answer","text":"The build is signed but not notarised with Apple, so the first launch is blocked by Gatekeeper. Control-click the app in Applications, choose Open, and confirm — you only do this once."}},
+ {"@type":"Question","name":"Where does my data live, and what happens on update?","acceptedAnswer":{"@type":"Answer","text":"Everything is in ~/Library/Application Support/PostGrabbit/ — the database, your profile, keys, backups and exports. Updating replaces only the app in Applications and cannot touch that folder; a backup is taken before every update download."}},
+ {"@type":"Question","name":"Can I read it from my phone?","acceptedAnswer":{"@type":"Answer","text":"Yes, deliberately opt-in: turn it on in Settings and the dashboard becomes reachable over your own Tailscale network — encrypted, with an access key, never exposed to the open Wi-Fi."}},
+ {"@type":"Question","name":"Why doesn't it show LinkedIn applicant counts?","acceptedAnswer":{"@type":"Answer","text":"LinkedIn renders that number only for signed-in sessions, and the app will not sign in on your behalf. There's a hand-kept applicant log instead."}},
+ {"@type":"Question","name":"Windows? Intel Macs?","acceptedAnswer":{"@type":"Answer","text":"The packaged app is macOS on Apple silicon only for now. The pipeline itself is Python and runs anywhere, but the one-click bundle is what the releases ship."}},
+ {"@type":"Question","name":"Is it free?","acceptedAnswer":{"@type":"Answer","text":"Yes. Optional AI features cost whatever your own provider charges you."}}]}
+</script>
 </head>
 <body>
 
@@ -425,6 +451,7 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
     <a class="item" href="#usage"><span class="en">How to use</span><span class="ko">사용법</span></a>
     <a class="item" href="#architecture"><span class="en">Under the hood</span><span class="ko">구성</span></a>
     <a class="item" href="#faq">FAQ</a>
+    <a class="nav-cta" href="https://github.com/JAEYOONSUNG/PostGrabbit/releases/latest"><span class="en">Download</span><span class="ko">다운로드</span></a>
     <div class="lang" role="group" aria-label="Language">
       <button id="lang-en" aria-pressed="true" onclick="setLang('en')">EN</button>
       <button id="lang-ko" aria-pressed="false" onclick="setLang('ko')">한국어</button>
