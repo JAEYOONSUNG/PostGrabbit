@@ -366,7 +366,8 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
 @media(max-width:920px){.pi-body{grid-template-columns:1fr}}
 .pi-left{padding:24px;border-right:1px solid var(--line-soft)}
 @media(max-width:920px){.pi-left{border-right:0;border-bottom:1px solid var(--line-soft)}}
-.pi-id{display:flex;gap:12px;align-items:center}
+.pi-id{display:flex;gap:12px;align-items:center;position:relative}
+.pi-sample{position:absolute;top:-6px;right:0;font-family:var(--mono);font-size:8.5px;letter-spacing:.06em;color:var(--band-n);border:1px dashed var(--line);border-radius:99px;padding:2px 8px}
 .pi-ava{width:46px;height:46px;border-radius:50%;background:var(--pine-wash);color:var(--pine-deep);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;flex:none;border:1px solid var(--brass-soft)}
 .pi-name{font-weight:700;font-size:15.5px;display:flex;align-items:center;gap:8px}
 .pi-aff{font-size:11.5px;color:var(--ink-soft);margin-top:2px}
@@ -946,11 +947,11 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
     <div class="pi-panel reveal" aria-hidden="true">
       <div class="pi-body">
         <div class="pi-left">
-          <div class="pi-id">
-            <span class="pi-ava">MC</span>
+          <div class="pi-id"><span class="pi-sample"><span class="en">fictional example</span><span class="ko">가상 인물 예시</span></span>
+            <span class="pi-ava">AV</span>
             <div>
-              <div class="pi-name">Prof. Mira Chen <span class="chip a">A</span></div>
-              <div class="pi-aff">ETH Zürich · D-BSSE · Basel</div>
+              <div class="pi-name">Prof. Aria Vantera <span class="chip a">A</span></div>
+              <div class="pi-aff">Meridian Institute of Bioengineering · Basel</div>
             </div>
           </div>
           <div class="pi-metrics">
@@ -1009,7 +1010,7 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
             <circle class="kg-pa" cx="246" cy="252" r="4"/>
             <circle class="kg-pt" cx="318" cy="214" r="5"/>
             <circle class="kg-po" cx="150" cy="284" r="0"/>
-            <text x="190" y="176" text-anchor="middle">Prof. M. Chen</text>
+            <text x="190" y="176" text-anchor="middle">Prof. A. Vantera</text>
             <text x="118" y="66" text-anchor="middle">co-author · 48 papers</text>
             <text x="232" y="50" text-anchor="middle">Science '25</text>
             <text x="318" y="232" text-anchor="middle">patent US-2025-…</text>
