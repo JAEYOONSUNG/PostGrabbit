@@ -30,7 +30,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --pine:#147A42;
@@ -58,6 +58,7 @@
   --dark-line:#1E3A29;
   --radius:14px;
   --sans:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Segoe UI",sans-serif;
+  --display:"Space Grotesk","Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo",sans-serif;
   --serif:var(--sans);
   --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
 }
@@ -97,10 +98,10 @@ header.scrolled{box-shadow:0 10px 30px -18px rgba(18,36,26,.25);border-bottom-co
 /* ————— shared type ————— */
 .eyebrow{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);font-weight:500}
 .eyebrow::before{content:"";width:26px;height:1px;background:var(--brass-soft)}
-h1{font-family:var(--sans);font-weight:800;font-size:clamp(37px,5vw,58px);line-height:1.1;letter-spacing:-.03em}
-h1 em{font-style:normal;color:var(--pine);letter-spacing:-.025em}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(36px,4.9vw,56px);line-height:1.08;letter-spacing:-.025em}
+h1 em{font-style:normal;color:var(--pine);letter-spacing:-.02em}
 html[lang="ko"] h1{font-size:clamp(32px,4.4vw,48px);line-height:1.22;letter-spacing:-.02em}
-h2{font-family:var(--sans);font-weight:750;font-size:clamp(27px,3.4vw,37px);line-height:1.18;margin-top:14px;letter-spacing:-.024em}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(26px,3.3vw,36px);line-height:1.16;margin-top:14px;letter-spacing:-.02em}
 h2 em{font-style:normal;color:var(--pine)}
 html[lang="ko"] h2{line-height:1.32;letter-spacing:-.015em}
 .section-lede{margin-top:16px;color:var(--ink-soft);max-width:40em;font-size:17px}
@@ -111,7 +112,9 @@ html[lang="ko"] h2{line-height:1.32;letter-spacing:-.015em}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
 
 /* ————— hero ————— */
-.hero{padding:92px 26px 26px}
+.hero{padding:92px 26px 26px;position:relative}
+.hero::before{content:"";position:absolute;top:-90px;right:-14%;width:64%;height:120%;background:radial-gradient(55% 50% at 60% 32%,rgba(20,122,66,.07),transparent 72%);pointer-events:none}
+[data-theme="dark"] .hero::before{background:radial-gradient(55% 50% at 60% 32%,rgba(53,196,137,.08),transparent 72%)}
 .hero-grid{display:grid;grid-template-columns:1fr .96fr;gap:64px;align-items:center}
 @media(max-width:940px){.hero-grid{grid-template-columns:1fr;gap:52px}}
 .lede{margin-top:24px;font-size:18.5px;color:var(--ink-soft);max-width:33em;line-height:1.7}
@@ -163,7 +166,7 @@ html[lang="ko"] h2{line-height:1.32;letter-spacing:-.015em}
 .stats{margin:64px 0 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr)}
 .stat{padding:26px 10px;text-align:center;border-left:1px solid var(--line)}
 .stat:first-child{border-left:0}
-.stat b{display:block;font-family:var(--sans);font-size:30px;font-weight:800;letter-spacing:-.02em;color:var(--pine-deep)}
+.stat b{display:block;font-family:var(--display);font-size:30px;font-weight:700;letter-spacing:-.015em;color:var(--pine-deep)}
 .stat span{display:block;margin-top:4px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
 @media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}.stat:nth-child(3){border-left:0}.stat:nth-child(n+3){border-top:1px solid var(--line)}}
 
@@ -177,7 +180,7 @@ section{padding:100px 0;scroll-margin-top:64px}
 .step:nth-child(even) .ghost{right:auto;left:-8px}
 @media(max-width:880px){.ghost{font-size:84px;top:20px}}
 .step-num{font-family:var(--mono);font-size:12px;color:var(--brass);font-weight:500;letter-spacing:.18em}
-h3{font-family:var(--sans);font-weight:700;font-size:24px;margin-top:8px;line-height:1.28;letter-spacing:-.018em}
+h3{font-family:var(--display);font-weight:700;font-size:23px;margin-top:8px;line-height:1.28;letter-spacing:-.015em}
 html[lang="ko"] h3{font-size:22px;letter-spacing:-.01em}
 .step>div>p{margin-top:14px;color:var(--ink-soft);font-size:15.5px}
 .micro{margin-top:18px;list-style:none;display:flex;flex-direction:column;gap:9px}
@@ -314,6 +317,17 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
 .rel-tag{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--pine-deep);flex:none;min-width:64px}
 .rel-name{color:var(--ink);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .rel-date{margin-left:auto;font-family:var(--mono);font-size:11.5px;color:var(--band-n);flex:none}
+
+/* ————— comparison ————— */
+.cmp-scroll{margin-top:44px;overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--paper-raise)}
+.cmp{width:100%;border-collapse:collapse;min-width:780px;font-size:14px}
+.cmp th,.cmp td{padding:16px 20px;text-align:left;border-top:1px solid var(--line-soft);vertical-align:top;line-height:1.55}
+.cmp thead th{border-top:0;font-size:13px;color:var(--ink-soft);font-weight:600;background:var(--paper-alt);white-space:nowrap}
+.cmp td:first-child,.cmp thead th:first-child{font-weight:600;color:var(--ink);width:17%}
+.cmp td{color:var(--ink-soft)}
+.cmp thead th.hl{background:var(--pine-wash);color:var(--pine-deep);font-family:var(--display);font-size:14px}
+.cmp td.hl{background:var(--pine-wash);color:var(--ink);font-weight:500}
+.cmp tr:last-child td.hl{box-shadow:0 -1px 0 var(--line-soft) inset}
 
 /* ————— dark theme ————— */
 [data-theme="dark"]{
@@ -972,6 +986,57 @@ footer{border-top:1px solid var(--line);padding:52px 0 60px;color:var(--ink-soft
       <div class="mod"><code>discovery/</code><p><span class="en">PI discovery through co-author and citation networks.</span><span class="ko">공저자·인용 네트워크를 통한 PI 발굴.</span></p></div>
       <div class="mod"><code>matching/</code><p><span class="en">CV-based scoring, role facets, deduplication, PI name extraction.</span><span class="ko">CV 기반 스코어링, 직급 축, 중복 병합, PI 이름 추출.</span></p></div>
       <div class="mod"><code>reporting/</code><p><span class="en">The dashboard, Excel export, email reports, advert fact extraction.</span><span class="ko">대시보드, Excel 내보내기, 이메일 리포트, 공고 조건 추출.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section id="compare" style="padding-top:0">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">The alternative</span><span class="ko">비교</span></p>
+    <h2><span class="en">What the browser-tab method costs.</span><span class="ko">탭 40개로 하던 일과 비교하면.</span></h2>
+    <div class="cmp-scroll reveal">
+      <table class="cmp">
+        <thead>
+          <tr>
+            <th></th>
+            <th><span class="en">By hand</span><span class="ko">직접 검색</span></th>
+            <th><span class="en">Board email alerts</span><span class="ko">보드 이메일 알림</span></th>
+            <th class="hl">PostGrabbit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="en">Coverage</span><span class="ko">커버리지</span></td>
+            <td><span class="en">One board at a time, when you remember</span><span class="ko">생각날 때, 한 번에 보드 하나</span></td>
+            <td><span class="en">One alert per board, per country</span><span class="ko">보드·국가마다 알림 따로</span></td>
+            <td class="hl"><span class="en">15+ sources on a schedule, every country you tick</span><span class="ko">15+ 소스를 정한 주기로, 체크한 국가 전부</span></td>
+          </tr>
+          <tr>
+            <td><span class="en">Duplicates</span><span class="ko">중복</span></td>
+            <td><span class="en">You notice the third time you open it</span><span class="ko">세 번째 열어보고서야 알아챕니다</span></td>
+            <td><span class="en">Every board mails the same job</span><span class="ko">같은 공고가 보드마다 옵니다</span></td>
+            <td class="hl"><span class="en">Merged across boards; your stars and notes follow</span><span class="ko">보드끼리 병합되고, 별표·메모가 따라갑니다</span></td>
+          </tr>
+          <tr>
+            <td><span class="en">Eligibility</span><span class="ko">지원 자격</span></td>
+            <td><span class="en">Read every advert to the last paragraph</span><span class="ko">공고를 끝 문단까지 읽어야 압니다</span></td>
+            <td><span class="en">Never mentioned</span><span class="ko">알려주지 않습니다</span></td>
+            <td class="hl"><span class="en">Visa and citizenship terms read for you; red hidden in one click</span><span class="ko">비자·시민권 조건을 대신 읽고, 클릭 한 번에 숨깁니다</span></td>
+          </tr>
+          <tr>
+            <td><span class="en">Fit</span><span class="ko">적합도</span></td>
+            <td><span class="en">Gut feeling at one in the morning</span><span class="ko">새벽 한 시의 감</span></td>
+            <td><span class="en">A keyword matched, nothing more</span><span class="ko">키워드 일치, 그 이상은 없음</span></td>
+            <td class="hl"><span class="en">Scored A–N against your CV and interests</span><span class="ko">CV와 관심사에 대조된 A–N 밴드</span></td>
+          </tr>
+          <tr>
+            <td><span class="en">What you decided</span><span class="ko">결정의 기록</span></td>
+            <td><span class="en">Bookmarks and a spreadsheet somewhere</span><span class="ko">어딘가의 북마크와 스프레드시트</span></td>
+            <td><span class="en">An inbox that scrolls away</span><span class="ko">스크롤 밑으로 사라지는 받은편지함</span></td>
+            <td class="hl"><span class="en">Stars, notes, kanban and letters — kept, locally</span><span class="ko">별표·메모·칸반·커버레터 — 전부 로컬에 남습니다</span></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
